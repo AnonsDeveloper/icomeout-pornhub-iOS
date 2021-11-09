@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TitleCollectionViewCell" id="oyA-79-vn9" customClass="TitleCollectionViewCell" customModule="ICO-visualizer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="75"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uRY-0n-Dkl">
+                <rect key="frame" x="0.0" y="0.0" width="390" height="75"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DZh-Pg-26o">
+                        <rect key="frame" x="30" y="15" width="330" height="45"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjC-h0-yv7">
+                                <rect key="frame" x="12" y="12" width="306" height="19.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" name="default_text"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="gjC-h0-yv7" secondAttribute="bottom" constant="13.5" id="14C-61-ac4"/>
+                            <constraint firstAttribute="trailing" secondItem="gjC-h0-yv7" secondAttribute="trailing" constant="12" id="bkn-XD-7wi"/>
+                            <constraint firstItem="gjC-h0-yv7" firstAttribute="top" secondItem="DZh-Pg-26o" secondAttribute="top" constant="12" id="cPI-fH-s2Q"/>
+                            <constraint firstItem="gjC-h0-yv7" firstAttribute="leading" secondItem="DZh-Pg-26o" secondAttribute="leading" constant="12" id="tKH-Em-EV2"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="DZh-Pg-26o" firstAttribute="top" secondItem="uRY-0n-Dkl" secondAttribute="top" constant="15" id="1mL-yS-Pu1"/>
+                    <constraint firstAttribute="trailing" secondItem="DZh-Pg-26o" secondAttribute="trailing" constant="30" id="fER-My-6zd"/>
+                    <constraint firstItem="DZh-Pg-26o" firstAttribute="leading" secondItem="uRY-0n-Dkl" secondAttribute="leading" constant="30" id="fQe-lW-A89"/>
+                    <constraint firstAttribute="bottom" secondItem="DZh-Pg-26o" secondAttribute="bottom" constant="15" id="g6R-qS-iom"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="749" height="75"/>
+            <connections>
+                <outlet property="titleLabel" destination="gjC-h0-yv7" id="jYR-d5-Z5f"/>
+            </connections>
+            <point key="canvasLocation" x="347.82608695652175" y="139.62053571428569"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="default_text">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

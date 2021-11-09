@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BannerCollectionViewCell" id="Mo4-oZ-gxw" customClass="BannerCollectionViewCell" customModule="ICO-visualizer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="112"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="kA0-kU-e4a">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="112"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehv-Ta-eYX">
+                        <rect key="frame" x="30" y="20" width="354" height="72"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZi-1e-Ttp">
+                                <rect key="frame" x="12" y="12" width="330" height="48"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" name="default_text"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="default_tab_background"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="iZi-1e-Ttp" secondAttribute="trailing" constant="12" id="B6b-Aa-877"/>
+                            <constraint firstItem="iZi-1e-Ttp" firstAttribute="top" secondItem="ehv-Ta-eYX" secondAttribute="top" constant="12" id="K4M-q0-Bnv"/>
+                            <constraint firstAttribute="bottom" secondItem="iZi-1e-Ttp" secondAttribute="bottom" constant="12" id="Phg-cd-8Qx"/>
+                            <constraint firstItem="iZi-1e-Ttp" firstAttribute="leading" secondItem="ehv-Ta-eYX" secondAttribute="leading" constant="12" id="Xa1-7d-A1K"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ehv-Ta-eYX" firstAttribute="top" secondItem="kA0-kU-e4a" secondAttribute="top" constant="20" id="16L-ec-QCR"/>
+                    <constraint firstAttribute="trailing" secondItem="ehv-Ta-eYX" secondAttribute="trailing" constant="30" id="3i0-MP-4QN"/>
+                    <constraint firstItem="ehv-Ta-eYX" firstAttribute="leading" secondItem="kA0-kU-e4a" secondAttribute="leading" constant="30" id="Gl2-9G-31a"/>
+                    <constraint firstAttribute="bottom" secondItem="ehv-Ta-eYX" secondAttribute="bottom" constant="20" id="dyJ-6c-PKt"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="849" height="326"/>
+            <connections>
+                <outlet property="backgroundViewCell" destination="ehv-Ta-eYX" id="F23-7Q-gdq"/>
+                <outlet property="textLabel" destination="iZi-1e-Ttp" id="1PQ-wB-gSH"/>
+            </connections>
+            <point key="canvasLocation" x="-191.30434782608697" y="106.47321428571428"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="default_tab_background">
+            <color red="0.16099999845027924" green="0.16099999845027924" blue="0.16099999845027924" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="default_text">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

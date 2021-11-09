@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ToggleCollectionViewCell" id="ZH6-cr-bzA" customClass="ToggleCollectionViewCell" customModule="ICO-visualizer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="755" height="163"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="pJq-Fo-k7T">
+                <rect key="frame" x="0.0" y="0.0" width="755" height="163"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7w4-HS-sTM">
+                        <rect key="frame" x="30" y="12" width="695" height="139"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BOT ATTIVI" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sD5-a0-5Bo">
+                                <rect key="frame" x="0.0" y="0.0" width="695" height="139"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
+                                <color key="textColor" name="default_text"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8rg-K3-Xlg">
+                                <rect key="frame" x="634" y="54" width="51" height="31"/>
+                                <color key="onTintColor" name="default_orange"/>
+                                <connections>
+                                    <action selector="onSwitchChanged:" destination="ZH6-cr-bzA" eventType="valueChanged" id="fIt-RK-b34"/>
+                                </connections>
+                            </switch>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="sD5-a0-5Bo" secondAttribute="bottom" id="6Xc-kU-bt7"/>
+                            <constraint firstAttribute="trailing" secondItem="8rg-K3-Xlg" secondAttribute="trailing" constant="12" id="Dzt-Qj-C8I"/>
+                            <constraint firstItem="8rg-K3-Xlg" firstAttribute="centerY" secondItem="sD5-a0-5Bo" secondAttribute="centerY" id="Ijd-HR-8Fz"/>
+                            <constraint firstAttribute="trailing" secondItem="sD5-a0-5Bo" secondAttribute="trailing" id="ePq-zL-BSk"/>
+                            <constraint firstItem="sD5-a0-5Bo" firstAttribute="leading" secondItem="7w4-HS-sTM" secondAttribute="leading" id="i4e-CY-eA5"/>
+                            <constraint firstItem="sD5-a0-5Bo" firstAttribute="top" secondItem="7w4-HS-sTM" secondAttribute="top" id="sgL-BN-dl0"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="7w4-HS-sTM" firstAttribute="leading" secondItem="pJq-Fo-k7T" secondAttribute="leading" constant="30" id="JbL-Kp-Eoy"/>
+                    <constraint firstItem="7w4-HS-sTM" firstAttribute="top" secondItem="pJq-Fo-k7T" secondAttribute="top" constant="12" id="OMg-fp-9o8"/>
+                    <constraint firstAttribute="bottom" secondItem="7w4-HS-sTM" secondAttribute="bottom" constant="12" id="cAn-SI-Omt"/>
+                    <constraint firstAttribute="trailing" secondItem="7w4-HS-sTM" secondAttribute="trailing" constant="30" id="fi1-Uk-cY3"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="755" height="163"/>
+            <connections>
+                <outlet property="switchView" destination="8rg-K3-Xlg" id="530-hG-Jd1"/>
+                <outlet property="titleView" destination="sD5-a0-5Bo" id="H8y-Yr-Eh3"/>
+            </connections>
+            <point key="canvasLocation" x="16.666666666666668" y="137.61160714285714"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="default_orange">
+            <color red="1" green="0.6470000147819519" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="default_text">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

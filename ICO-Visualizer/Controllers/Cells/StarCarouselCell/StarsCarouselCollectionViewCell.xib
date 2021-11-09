@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StarsCarouselCollectionViewCell" id="Et0-vP-KXw" customClass="StarsCarouselCollectionViewCell" customModule="ICO-visualizer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="504" height="326"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="XBp-FX-IbI">
+                <rect key="frame" x="0.0" y="0.0" width="504" height="326"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="awo-0Z-ioW">
+                        <rect key="frame" x="0.0" y="10" width="504" height="302"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="302" id="wpp-sA-ibU"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5N6-AE-TZe">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="awo-0Z-ioW" firstAttribute="leading" secondItem="XBp-FX-IbI" secondAttribute="leading" id="QhQ-jJ-tW9"/>
+                    <constraint firstAttribute="trailing" secondItem="awo-0Z-ioW" secondAttribute="trailing" id="WuL-gb-Q2w"/>
+                    <constraint firstAttribute="bottom" secondItem="awo-0Z-ioW" secondAttribute="bottom" constant="14" id="ing-Nm-psz"/>
+                    <constraint firstItem="awo-0Z-ioW" firstAttribute="top" secondItem="XBp-FX-IbI" secondAttribute="top" constant="10" id="r8P-EP-24X"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="863" height="326"/>
+            <connections>
+                <outlet property="collectionView" destination="awo-0Z-ioW" id="0UE-cw-7FO"/>
+            </connections>
+            <point key="canvasLocation" x="257.97101449275362" y="212.27678571428569"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
