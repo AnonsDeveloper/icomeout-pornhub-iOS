@@ -87,7 +87,6 @@ extension TabBarViewController: TabBarViewControllerDelegate {
         if let vc = self.controllers[0] as? HomeViewController {
             vc.searchForCategory(category: category)
         }
-       // self.setViewController(index: 0)
     }
     
     func setHeader() {

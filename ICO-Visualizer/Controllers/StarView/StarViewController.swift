@@ -103,7 +103,6 @@ class StarViewController: BaseViewController {
     private var lastImagesError: String?
     
     override func viewDidLoad() {
-        //super.viewDidLoad()
         coordinator = StarViewCoordinator(self)
         self.setupView()
         
@@ -217,7 +216,6 @@ class StarViewController: BaseViewController {
         errorTextLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
         errorTextLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
         errorTextLabel.centerYAnchor.constraint(equalTo: self.collectionView.centerYAnchor).isActive = true
-        //self.setupToHideKeyboardOnTapOnView()
         NotificationCenter.default.addObserver(self, selector: #selector(onDidUpdateBookmarks(_:)), name: .didUpdateBookmarks, object: nil)
         self.refreshCollection()
     }
@@ -300,7 +298,6 @@ extension StarViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return CGSize(
                 width: size,
                 height: size
-                //height: UICollectionViewFlowLayout.automaticSize.height
             )
         }
         return CGSize(

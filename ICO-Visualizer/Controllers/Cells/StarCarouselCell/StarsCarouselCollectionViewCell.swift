@@ -21,18 +21,7 @@ class StarsCarouselCollectionViewCell: FullWidthCollectionViewCell {
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
             flowLayout.scrollDirection = .horizontal
-           //flowLayout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 45)
-           //flowLayout.sectionHeadersPinToVisibleBounds = true
             flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-
-//            flowLayout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 45)
-//            flowLayout.sectionInset = UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 12)
-//            flowLayout.sectionHeadersPinToVisibleBounds = true
-//            flowLayout.estimatedItemSize = CGSize(
-//                width: UIScreen.main.bounds.width - 30,
-//                height: 200
-//            )
-//            flowLayout.invalidateLayout()
         }
         collectionView.register(cellType: StarCollectionViewCell.self)
         collectionView.delegate = self

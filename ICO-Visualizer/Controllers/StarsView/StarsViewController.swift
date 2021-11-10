@@ -176,7 +176,6 @@ extension StarsViewController: UICollectionViewDelegate, UICollectionViewDataSou
             cell.setup(star: star)
         }
         
-        //cell.setup(title: self.coordinator.categories[indexPath.row].category ?? "")
         return cell
     }
     
@@ -195,7 +194,6 @@ extension StarsViewController: StarsViewControllerDelegate {
     func reloadView() {
         DispatchQueue.main.async {
             self.errorTextLabel.isHidden = true
-            //self.collectionView.bottomRefreshControl?.endRefreshing()
             self.collectionView.reloadData()
             self.collectionView.refreshControl?.endRefreshing()
             self.searchForStar()

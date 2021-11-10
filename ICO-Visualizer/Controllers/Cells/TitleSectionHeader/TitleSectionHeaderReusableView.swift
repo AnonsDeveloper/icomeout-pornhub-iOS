@@ -39,8 +39,6 @@ extension TitleSectionHeaderReusableView : ViewSetable {
     }
 
     func setupConstraints() {
-        // Title label constraints.
-        //titleLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
         titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 30).isActive = true

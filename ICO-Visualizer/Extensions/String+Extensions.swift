@@ -22,7 +22,6 @@ extension String {
         let dateFormatterPrint = DateFormatter()
         dateFormatterPrint.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return dateFormatterPrint.date(from: self)
-        //2021-11-05 22:50:07
     }
     
     func capturedGroups(withRegex pattern: String) -> [String] {
@@ -37,7 +36,6 @@ extension String {
 
          let matches = regex.matches(in: self, options: [], range: NSRange(location:0, length: self.count))
 
-         //guard let match = matches.first else { return results }
         for item in matches {
             let lastRangeIndex = item.numberOfRanges - 1
             guard lastRangeIndex >= 1 else { return results }

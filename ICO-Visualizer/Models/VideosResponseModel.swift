@@ -47,31 +47,6 @@ struct Video: Codable {
     }
 }
 
-//struct Rating: Codable {
-//    let type: Int?
-//
-//    init(from decoder: Decoder) throws {
-//        // Decode all fields and store them
-//        let container = try decoder.container(keyedBy: CodingKeys.self) // The compiler creates coding keys for each property, so as long as the keys are the same as the property names, we don't need to define our own enum.
-//
-//        // First check for a Double
-//        do {
-//            type = try container.decode(Int.self, forKey: .type)
-//
-//        } catch {
-//            // The check for a String and then cast it, this will throw if decoding fails
-//            if let typeValue = Int(try container.decode(String.self, forKey: .type)) {
-//                type = typeValue
-//            } else {
-//                // You may want to throw here if you don't want to default the value(in the case that it you can't have an optional).
-//                type = nil
-//            }
-//        }
-//
-//        // Perform other decoding for other properties.
-//    }
-//}
-
 struct Rating: Codable {
     let rating: Double
     let ratingString: String

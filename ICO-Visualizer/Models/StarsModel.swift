@@ -36,16 +36,3 @@ struct Star: Codable {
         case starVideos
     }
 }
-//
-//enum Gender: String, Codable {
-//    case couple = "Couple"
-//    case f2M = "f2m"
-//    case female = "female"
-//    case m2F = "m2f"
-//    case male = "male"
-//    case nonBinary = "Non-Binary"
-//    case other = "Other"
-//    case sameSexCoupleFemale = "Same Sex Couple (Female)"
-//    case sameSexCoupleMale = "Same Sex Couple (Male)"
-//    case unknown = "unknown"
-//}

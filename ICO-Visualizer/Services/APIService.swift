@@ -196,7 +196,6 @@ class APIService {
     }
     
     func getStarImages(starName: String, completionHandler: ((Result<[String], Error>) -> Void)?){
-        //"data-src\\s*=\\s*\"([^\"]+)\""
         let strUrl = "https://www.pornpictureshq.com/"
         let params: Parameters = [ "q" :  starName.lowercased().replacingOccurrences(of: " ", with: "+")]
         AF.request(strUrl, method: .get, parameters: params).responseString { response in

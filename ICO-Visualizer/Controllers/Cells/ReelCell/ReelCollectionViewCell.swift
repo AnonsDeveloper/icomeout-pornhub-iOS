@@ -69,10 +69,7 @@ class ReelCollectionViewCell: UICollectionViewCell {
         self.index = index
         let avPlayer = AVPlayer(url: url);
         avPlayer.volume = 0
-//        playerView?.playerLayer.player = avPlayer;
-//        playerView?.playerLayer.player?.play()
-//
-//
+
         self.playerView.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
         let playerItem = AVPlayerItem(url: url)
         self.player = AVQueuePlayer(items: [playerItem])
@@ -90,7 +87,7 @@ class ReelCollectionViewCell: UICollectionViewCell {
         for recognizer in self.playerView.gestureRecognizers ?? [] {
             playerView.removeGestureRecognizer(recognizer)
         }
-        //self.playerView.backgroundColor = .clear
+
         let soundTap = UITapGestureRecognizer(target: self, action: #selector(self.switchSoundTap(_:)))
         playerView.isUserInteractionEnabled = true
         playerView.addGestureRecognizer(soundTap)
@@ -99,7 +96,6 @@ class ReelCollectionViewCell: UICollectionViewCell {
         playerView.addGestureRecognizer(longPressRecognizer)
         
         player?.addPeriodicTimeObserver(forInterval: CMTime(value: CMTimeValue(1), timescale: 2), queue: DispatchQueue.main) {[weak self] (progressTime) in
-           // self?.playerView.backgroundColor = gif.avgColor.hexStringToUIColor()
             let currentTime = Float(CMTimeGetSeconds(progressTime))
             let progress = self?.normalize(val: currentTime, min: 0, max: Float(gif.duration)) ?? 0
             self?.progressBar.setProgress(progress, animated: true)
@@ -112,7 +108,6 @@ class ReelCollectionViewCell: UICollectionViewCell {
             self.userAvatarView.layer.cornerRadius = self.userAvatarView.frame.width / 2
             self.userAvatarView.layer.borderWidth = 1
             self.userAvatarView.layer.borderColor = UIColor.white.cgColor
-          //  self.userAvatarView.layer.
             self.playerLayer?.frame = self.playerView.frame
             self.bringSubviewToFront(self.userAvatarView)
             self.bringSubviewToFront(self.notContentView)
@@ -154,7 +149,6 @@ class ReelCollectionViewCell: UICollectionViewCell {
     }
     
     func normalize(val: Float, min: Float, max: Float) -> Float {
-        //function(val, max, min) { return (val - min) / (max - min); }
         return (val - min) / (max - min)
     }
     
@@ -182,23 +176,4 @@ class ReelCollectionViewCell: UICollectionViewCell {
         self.delegate?.switchSound()
     }
     
-}
-
-class PlayerView: UIView {
-    override static var layerClass: AnyClass {
-        return AVPlayerLayer.self;
-    }
-
-    var playerLayer: AVPlayerLayer {
-        return layer as! AVPlayerLayer;
-    }
-    
-    var player: AVPlayer? {
-        get {
-            return playerLayer.player;
-        }
-        set {
-            playerLayer.player = newValue;
-        }
-    }
 }

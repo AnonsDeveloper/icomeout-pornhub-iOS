@@ -23,11 +23,6 @@ class BookmarksViewController: BaseViewController {
         collectionView.setupView(self)
         
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-//            flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 15, right: 0)
-//            flowLayout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 45)
-//            flowLayout.sectionHeadersPinToVisibleBounds = true
-//            flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-
             flowLayout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 50)
             flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             flowLayout.sectionHeadersPinToVisibleBounds = true
@@ -62,16 +57,7 @@ class BookmarksViewController: BaseViewController {
 }
 
 extension BookmarksViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        if indexPath.section == 0 {
-//            return UICollectionViewFlowLayout.automaticSize
-//        }
-//        else{
-//            return CGSize(width: UIScreen.main.bounds.width - 30, height: 200)
-//        }
-//    }
-    
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }

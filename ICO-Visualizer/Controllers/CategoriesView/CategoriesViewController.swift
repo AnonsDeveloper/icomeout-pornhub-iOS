@@ -74,16 +74,7 @@ class CategoriesViewController: BaseViewController {
             )
             flowLayout.invalidateLayout()
         }
-       // let bottomRefreshController = UIRefreshControl()
-        
-//        self.view.addSubview(searchField)
-//        searchField.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-//        searchField.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-//        searchField.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-//        
-        //collectionView.bottomRefreshControl = bottomRefreshController
         coordinator = CategoriesViewCoordinator(self)
-        //self.loadingData = true
         let refreshControl = UIRefreshControl()
         refreshControl.tintColor = .white
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -94,7 +85,6 @@ class CategoriesViewController: BaseViewController {
                                        width: refreshControl.bounds.size.width,
                                        height: refreshControl.bounds.size.height)
         self.collectionView.refreshControl?.beginRefreshing()
-        //collectionView.bottomRefreshControl?.beginRefreshing()
         coordinator.loadData()
         
     }
@@ -169,12 +159,10 @@ extension CategoriesViewController: CategoriesViewDelegate {
         DispatchQueue.main.async {
             self.collectionView.refreshControl?.endRefreshing()
             self.errorTextLabel.isHidden = true
-            //self.collectionView.bottomRefreshControl?.endRefreshing()
             self.collectionView.reloadData()
             if CategoriesViewController.currentIndex != 0 {
                 self.collectionView.scrollToItem(at: IndexPath(row: CategoriesViewController.currentIndex, section: 0), at: .centeredVertically, animated: false)
             }
-           // self.loadingData = false
         }
     }
     

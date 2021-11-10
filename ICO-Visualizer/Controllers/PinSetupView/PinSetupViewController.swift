@@ -172,13 +172,10 @@ class PinSetupViewController: UIViewController {
                         if success {
                             NotificationCenter.default.post(name: .didEnterCorrectPin, object: nil)
                             self?.dismiss(animated: true, completion: nil)
-                        } else {
-                            //self?.showKillAlert()
                         }
                     }
                 }
             } else {
-                //showKillAlert()
             }
         }
     }
