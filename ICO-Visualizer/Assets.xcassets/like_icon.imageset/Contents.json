@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icons8-stella-90.png",
+      "filename" : "icons8-mi-piace-90.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icons8-stella-90@2x.png",
+      "filename" : "icons8-mi-piace-90@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icons8-stella-90@3x.png",
+      "filename" : "icons8-mi-piace-90@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

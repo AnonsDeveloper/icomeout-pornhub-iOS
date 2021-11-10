@@ -11,6 +11,18 @@ import UIKit
 class UserPreferences{
     static let shared = UserPreferences()
     
+    var isAudioOn: Bool {
+        get{
+            if UserDefaults.standard.object(forKey: "isAudioOn") == nil {
+                return true
+            }
+            return UserDefaults.standard.bool(forKey: "isAudioOn")
+        }
+        set{
+            UserDefaults.standard.set(newValue, forKey: "isAudioOn")
+        }
+    }
+    
     var userPin: String? {
         get{
             return UserDefaults.standard.string(forKey: "userPin")

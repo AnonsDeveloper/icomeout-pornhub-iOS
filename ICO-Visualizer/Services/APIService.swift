@@ -10,9 +10,11 @@ import Foundation
 import Alamofire
 
 class APIService {
+
     public static let shared = APIService()
     
     private let baseUrl = "https://www.pornhub.com/webmasters"
+    private let feedsUrl = "https://api.redgifs.com/v2/home/feeds"
     
     private var retryCount: Int = 0
     private let maxRetry: Int = 3
@@ -214,6 +216,28 @@ class APIService {
                 completionHandler?(.success(res))
             }
             else {
+                completionHandler?(.failure(APIServiceError.noDataFound))
+            }
+        }
+    }
+    
+    func fetchFeeds(completionHandler: ((Result<FeedsResponse, Error>) -> Void)?){
+        AF.request(self.feedsUrl, method: .get).responseJSON { result in
+            if let error = result.error{
+                completionHandler?(.failure(error))
+                return
+            }
+            if let data = result.data{
+                do {
+                    let response = try JSONDecoder().decode(FeedsResponse.self, from: data)
+                    completionHandler?(.success(response))
+                }
+                catch{
+                    completionHandler?(.failure(APIServiceError.decodeError(error)))
+                    print(data)
+                }
+            }
+            else{
                 completionHandler?(.failure(APIServiceError.noDataFound))
             }
         }

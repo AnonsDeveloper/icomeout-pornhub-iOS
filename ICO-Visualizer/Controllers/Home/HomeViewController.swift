@@ -116,7 +116,6 @@ class HomeViewController: BaseViewController {
                                        width: refreshControl.bounds.size.width,
                                        height: refreshControl.bounds.size.height)
         self.collectionView.refreshControl?.beginRefreshing()
-        
     }
     
     @objc func onEnterPin(_ notification: Notification)

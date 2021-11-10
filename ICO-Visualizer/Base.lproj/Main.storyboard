@@ -6,13 +6,14 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Tab Bar View Controller-->
         <scene sceneID="rIh-8x-O3l">
             <objects>
-                <viewController id="i9v-RA-ckO" customClass="TabBarViewController" customModule="ICO-visualizer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="i9v-RA-ckO" customClass="TabBarViewController" customModule="ICO_visualizer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cVS-5B-Vtb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,54 +27,54 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jrg-6b-wYq">
                                 <rect key="frame" x="0.0" y="776" width="414" height="120"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4wp-MN-Y9K">
-                                        <rect key="frame" x="186" y="39" width="42" height="42"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fYj-eR-QJk">
+                                        <rect key="frame" x="0.0" y="18" width="414" height="54"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MkN-tp-o93">
+                                                <rect key="frame" x="0.0" y="0.0" width="97.5" height="54"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="star_icon"/>
+                                                <connections>
+                                                    <action selector="onItemSelect:" destination="i9v-RA-ckO" eventType="touchUpInside" id="QK7-sG-gXG"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4wp-MN-Y9K">
+                                                <rect key="frame" x="105.5" y="0.0" width="97.5" height="54"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="home_icon">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="onItemSelect:" destination="i9v-RA-ckO" eventType="touchUpInside" id="U47-lB-FqF"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibZ-EM-Oc5">
+                                                <rect key="frame" x="211" y="0.0" width="97.5" height="54"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="reels_icon"/>
+                                                <connections>
+                                                    <action selector="onItemSelect:" destination="i9v-RA-ckO" eventType="touchUpInside" id="hhu-Za-aqC"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PYb-Xo-V0p">
+                                                <rect key="frame" x="316.5" y="0.0" width="97.5" height="54"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="bookmark_icon"/>
+                                                <connections>
+                                                    <action selector="onItemSelect:" destination="i9v-RA-ckO" eventType="touchUpInside" id="1AU-pc-ll3"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="42" id="PHU-u2-QJx"/>
-                                            <constraint firstAttribute="width" constant="42" id="nE4-oo-PXe"/>
+                                            <constraint firstAttribute="height" constant="54" id="5og-3v-j7R"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="home_icon">
-                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="onItemSelect:" destination="i9v-RA-ckO" eventType="touchUpInside" id="U47-lB-FqF"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PYb-Xo-V0p">
-                                        <rect key="frame" x="276" y="39" width="42" height="42"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="42" id="QKN-zW-L0y"/>
-                                            <constraint firstAttribute="width" constant="42" id="maM-PJ-GeK"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="bookmark_icon"/>
-                                        <connections>
-                                            <action selector="onItemSelect:" destination="i9v-RA-ckO" eventType="touchUpInside" id="1AU-pc-ll3"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MkN-tp-o93">
-                                        <rect key="frame" x="86" y="39" width="42" height="42"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="42" id="P4S-6V-4fx"/>
-                                            <constraint firstAttribute="height" constant="42" id="U0b-3V-QCN"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="star_icon"/>
-                                        <connections>
-                                            <action selector="onItemSelect:" destination="i9v-RA-ckO" eventType="touchUpInside" id="QK7-sG-gXG"/>
-                                        </connections>
-                                    </button>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" name="default_tab_background"/>
                                 <constraints>
-                                    <constraint firstItem="PYb-Xo-V0p" firstAttribute="centerX" secondItem="Jrg-6b-wYq" secondAttribute="centerX" constant="90" id="7T1-l6-ahd"/>
-                                    <constraint firstItem="PYb-Xo-V0p" firstAttribute="centerY" secondItem="Jrg-6b-wYq" secondAttribute="centerY" id="Pzx-Rz-Rcb"/>
-                                    <constraint firstItem="MkN-tp-o93" firstAttribute="centerX" secondItem="Jrg-6b-wYq" secondAttribute="centerX" constant="-100" id="TQg-Rv-Kxa"/>
-                                    <constraint firstItem="4wp-MN-Y9K" firstAttribute="centerX" secondItem="Jrg-6b-wYq" secondAttribute="centerX" id="WLX-Tg-SYw"/>
+                                    <constraint firstItem="fYj-eR-QJk" firstAttribute="leading" secondItem="Jrg-6b-wYq" secondAttribute="leading" id="MNK-hk-9nP"/>
                                     <constraint firstAttribute="height" constant="120" id="Xgx-S8-YPx"/>
-                                    <constraint firstItem="4wp-MN-Y9K" firstAttribute="centerY" secondItem="Jrg-6b-wYq" secondAttribute="centerY" id="jfY-Fj-yTC"/>
-                                    <constraint firstItem="MkN-tp-o93" firstAttribute="centerY" secondItem="Jrg-6b-wYq" secondAttribute="centerY" id="yCS-Bb-hwc"/>
+                                    <constraint firstAttribute="trailing" secondItem="fYj-eR-QJk" secondAttribute="trailing" id="pZE-kT-MoR"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXq-jc-XH2">
@@ -122,6 +123,7 @@
                             <constraint firstItem="oNs-wk-xre" firstAttribute="leading" secondItem="sLs-ui-iDK" secondAttribute="leading" id="6a2-xB-NnQ"/>
                             <constraint firstItem="Jrg-6b-wYq" firstAttribute="leading" secondItem="sLs-ui-iDK" secondAttribute="leading" id="7ff-6M-8b7"/>
                             <constraint firstItem="aXq-jc-XH2" firstAttribute="trailing" secondItem="sLs-ui-iDK" secondAttribute="trailing" id="96J-1X-qWM"/>
+                            <constraint firstItem="fYj-eR-QJk" firstAttribute="bottom" secondItem="sLs-ui-iDK" secondAttribute="bottom" constant="-14" id="9hn-kF-twe"/>
                             <constraint firstItem="sLs-ui-iDK" firstAttribute="trailing" secondItem="oNs-wk-xre" secondAttribute="trailing" id="RyR-4A-h49"/>
                             <constraint firstItem="aXq-jc-XH2" firstAttribute="leading" secondItem="sLs-ui-iDK" secondAttribute="leading" id="dWb-Bg-X91"/>
                             <constraint firstItem="Jrg-6b-wYq" firstAttribute="top" secondItem="oNs-wk-xre" secondAttribute="bottom" id="m2r-fU-xJF"/>
@@ -132,11 +134,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="m5s-HY-I0f"/>
                     <connections>
+                        <outlet property="headerHeightConstraing" destination="Kgi-Vb-cB8" id="oDV-0T-6b6"/>
                         <outlet property="headerLogoImageView" destination="8Ar-M6-8Nt" id="ceC-eO-x7j"/>
+                        <outlet property="headerView" destination="aXq-jc-XH2" id="h7K-Xy-i1K"/>
                         <outlet property="settingsButton" destination="nGA-vp-VuA" id="a0B-tG-olp"/>
                         <outletCollection property="tabItems" destination="4wp-MN-Y9K" collectionClass="NSMutableArray" id="Edg-91-X9s"/>
                         <outletCollection property="tabItems" destination="PYb-Xo-V0p" collectionClass="NSMutableArray" id="Xek-R4-56c"/>
                         <outletCollection property="tabItems" destination="MkN-tp-o93" collectionClass="NSMutableArray" id="jgy-Jo-Wdy"/>
+                        <outletCollection property="tabItems" destination="ibZ-EM-Oc5" collectionClass="NSMutableArray" id="evQ-5n-rpu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jbc-Ul-zdG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -146,7 +151,7 @@
         <!--Base Navigation Controller-->
         <scene sceneID="QPp-H3-0iW">
             <objects>
-                <navigationController id="NXt-ca-qYz" customClass="BaseNavigationController" customModule="ICO-visualizer" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="NXt-ca-qYz" customClass="BaseNavigationController" customModule="ICO_visualizer" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JES-Fq-LuK">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -158,10 +163,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bookmark_icon" width="40" height="40"/>
+        <image name="bookmark_icon" width="30" height="30"/>
         <image name="home_icon" width="30" height="30"/>
-        <image name="settings_icon" width="20" height="20"/>
-        <image name="star_icon" width="33" height="33"/>
+        <image name="reels_icon" width="25" height="25"/>
+        <image name="settings_icon" width="30" height="30"/>
+        <image name="star_icon" width="30" height="30"/>
         <namedColor name="default_background">
             <color red="0.10599999874830246" green="0.10599999874830246" blue="0.10599999874830246" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

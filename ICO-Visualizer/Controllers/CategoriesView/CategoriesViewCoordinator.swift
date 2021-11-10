@@ -15,12 +15,16 @@ class CategoriesViewCoordinator {
     private var allCategories: [Category] = []
     
     private var delegate: CategoriesViewDelegate!
+    
+    public var filter: String = ""
 
     init(_ delegate: CategoriesViewDelegate) {
         self.delegate = delegate
     }
     
     func loadData(){
+        self.categories = []
+        self.allCategories = []
         APIService.shared.fetchCategories { result in
             switch result {
             case .success(let categories):
@@ -34,6 +38,7 @@ class CategoriesViewCoordinator {
     }
     
     func filterCategories(filter: String){
+        self.filter = filter
         if filter == "" {
             self.categories = allCategories
             DispatchQueue.main.async {

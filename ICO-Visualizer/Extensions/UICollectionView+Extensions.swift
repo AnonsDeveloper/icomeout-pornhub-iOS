@@ -32,6 +32,7 @@ extension UICollectionView {
         self.register(cellType: ToggleCollectionViewCell.self)
         self.register(cellType: StarsCarouselCollectionViewCell.self)
         self.register(cellType: ImageCollectionViewCell.self)
+        self.register(cellType: ReelCollectionViewCell.self)
         self.register(LeftImageCaptionTableViewCell.self, forCellWithReuseIdentifier: LeftImageCaptionTableViewCell.className)
         self.register(TitleSectionHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleSectionHeaderReusableView.className)
     }

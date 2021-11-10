@@ -150,7 +150,12 @@ extension CategoriesViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let category = self.coordinator.categories[indexPath.row].category {
-            CategoriesViewController.currentIndex = indexPath.row
+            if coordinator.filter == "" {
+                CategoriesViewController.currentIndex = 0
+            }
+            else{
+                CategoriesViewController.currentIndex = indexPath.row
+            }
             self.tabDelegate?.searchForCategory(category: category)
             DispatchQueue.main.async {
                 self.navigationController?.popViewController(animated: true)
