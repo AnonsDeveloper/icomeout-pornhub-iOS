@@ -13,7 +13,7 @@ class TabBarViewController: UIViewController {
 
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var headerHeightConstraing: NSLayoutConstraint!
-    private let defaultHeaderHeight: CGFloat = 120
+    private let defaultHeaderHeight: CGFloat = 70
     
     
     @IBOutlet weak var settingsButton: UIButton!
@@ -47,7 +47,7 @@ class TabBarViewController: UIViewController {
     }
     
     private func setViewController(index: Int){
-        self.headerHeightConstraing.constant = index == 3 ? 0 : self.defaultHeaderHeight
+        self.headerHeightConstraing.constant = index == 3 ? 0 : self.defaultHeaderHeight + UIScreen.main.topSafeAreaHeight
         self.headerView.isHidden = index == 3
         let vc = controllers[index]
         vc.tabDelegate = self

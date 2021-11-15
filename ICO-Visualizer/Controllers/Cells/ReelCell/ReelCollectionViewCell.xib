@@ -31,14 +31,14 @@
                         </constraints>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="verified_icon" translatesAutoresizingMaskIntoConstraints="NO" id="OvN-Tp-FB3">
-                        <rect key="frame" x="61" y="271" width="11" height="11"/>
+                        <rect key="frame" x="65" y="233" width="11" height="11"/>
                         <color key="tintColor" systemColor="systemTealColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="11" id="S69-g1-vLW"/>
                             <constraint firstAttribute="width" secondItem="OvN-Tp-FB3" secondAttribute="height" multiplier="1:1" id="zFT-gq-eNt"/>
                         </constraints>
                     </imageView>
-                    <progressView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="isq-yg-HP1">
+                    <progressView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="isq-yg-HP1">
                         <rect key="frame" x="0.0" y="314" width="186" height="1"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="mqu-SP-J2k"/>
@@ -47,7 +47,13 @@
                         <color key="trackTintColor" name="default_grey"/>
                     </progressView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhq-M4-SYs">
-                        <rect key="frame" x="24" y="268" width="37" height="17"/>
+                        <rect key="frame" x="24" y="228.5" width="41" height="19.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                        <color key="textColor" name="default_text"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZ7-En-zAW">
+                        <rect key="frame" x="24" y="268" width="63" height="17"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                         <color key="textColor" name="default_text"/>
                         <nil key="highlightedColor"/>
@@ -73,15 +79,18 @@
                 <constraints>
                     <constraint firstItem="QYr-77-E4X" firstAttribute="top" secondItem="hNR-yW-uFv" secondAttribute="top" id="0ZK-xZ-sCe"/>
                     <constraint firstItem="isq-yg-HP1" firstAttribute="leading" secondItem="hNR-yW-uFv" secondAttribute="leading" id="6iZ-uE-Gu9"/>
+                    <constraint firstItem="SZ7-En-zAW" firstAttribute="leading" secondItem="hNR-yW-uFv" secondAttribute="leading" constant="24" id="EyD-xI-M1N"/>
                     <constraint firstAttribute="trailing" secondItem="isq-yg-HP1" secondAttribute="trailing" id="GS3-f2-23r"/>
                     <constraint firstItem="Lhq-M4-SYs" firstAttribute="leading" secondItem="hNR-yW-uFv" secondAttribute="leading" constant="24" id="GvJ-IL-p8t"/>
                     <constraint firstItem="Hwe-b1-urK" firstAttribute="bottom" secondItem="6xu-6s-XPk" secondAttribute="bottom" constant="-30" id="Hvb-hw-rhz"/>
                     <constraint firstAttribute="bottom" secondItem="QYr-77-E4X" secondAttribute="bottom" id="KZI-QL-dV9"/>
                     <constraint firstAttribute="bottom" secondItem="6xu-6s-XPk" secondAttribute="bottom" id="Pxi-MS-fC7"/>
+                    <constraint firstAttribute="bottom" secondItem="SZ7-En-zAW" secondAttribute="bottom" constant="30" id="QNL-kv-zWk"/>
                     <constraint firstItem="OvN-Tp-FB3" firstAttribute="centerY" secondItem="Lhq-M4-SYs" secondAttribute="centerY" id="QwK-rk-QFa"/>
-                    <constraint firstAttribute="bottom" secondItem="Lhq-M4-SYs" secondAttribute="bottom" constant="30" id="SVe-eV-Qdw"/>
                     <constraint firstAttribute="bottom" secondItem="isq-yg-HP1" secondAttribute="bottom" id="XV4-zh-mTL"/>
                     <constraint firstItem="Hwe-b1-urK" firstAttribute="trailing" secondItem="6xu-6s-XPk" secondAttribute="trailing" constant="-20" id="cVY-yf-6bp"/>
+                    <constraint firstItem="SZ7-En-zAW" firstAttribute="top" secondItem="Lhq-M4-SYs" secondAttribute="bottom" constant="20" id="ezo-tU-acA"/>
+                    <constraint firstItem="Hwe-b1-urK" firstAttribute="leading" secondItem="SZ7-En-zAW" secondAttribute="trailing" constant="24" id="fV4-ck-0Aa"/>
                     <constraint firstAttribute="trailing" secondItem="QYr-77-E4X" secondAttribute="trailing" id="gG3-6d-KLp"/>
                     <constraint firstAttribute="trailing" secondItem="6xu-6s-XPk" secondAttribute="trailing" id="n8C-sf-Mb2"/>
                     <constraint firstItem="6xu-6s-XPk" firstAttribute="leading" secondItem="hNR-yW-uFv" secondAttribute="leading" id="obm-3K-3Et"/>
@@ -95,6 +104,7 @@
                 <outlet property="notContentView" destination="QYr-77-E4X" id="QrH-lk-D39"/>
                 <outlet property="playerView" destination="6xu-6s-XPk" id="wKK-xL-0Q1"/>
                 <outlet property="progressBar" destination="isq-yg-HP1" id="w4U-Cs-YiN"/>
+                <outlet property="tagsLabel" destination="SZ7-En-zAW" id="6bI-71-9sy"/>
                 <outlet property="userAvatarView" destination="Hwe-b1-urK" id="Jan-Fh-5lS"/>
                 <outlet property="usernameLabel" destination="Lhq-M4-SYs" id="uSh-4H-ROI"/>
                 <outlet property="verifiedIcon" destination="OvN-Tp-FB3" id="BHH-oE-556"/>

@@ -20,42 +20,42 @@ struct FeedsResponse: Codable {
 
 // MARK: - HorizontalGIF
 struct HorizontalGIF: Codable {
-    let id: String
-    let createDate: Int
-    let hasAudio: Bool
-    let width, height, likes: Int
-    let tags: [String]
-    let verified: Bool
-    let views, duration: Int
-    let published: Bool
-    let urls: Urls
-    let userName: String
-    let type: Int
-    let avgColor: String
+    let id: String?
+    let createDate: Int?
+    let hasAudio: Bool?
+    let width, height, likes: Int?
+    let tags: [String]?
+    let verified: Bool?
+    let views, duration: Int?
+    let published: Bool?
+    let urls: Urls?
+    let userName: String?
+    let type: Int?
+    let avgColor: String?
     let gallery: String?
-    let user: User
+    let user: User?
 }
 
 // MARK: - Urls
 struct Urls: Codable {
-    let sd, hd: String
+    let sd, hd: String?
     let gif: String?
     let poster: String?
-    let thumbnail: String
+    let thumbnail: String?
     let vthumbnail: String?
 }
 
 // MARK: - User
 struct User: Codable {
-    let creationtime, followers, following, gifs: Int
+    let creationtime, followers, following, gifs: Int?
     let name: String?
     let profileImageURL: String?
-    let profileURL: String
-    let publishedGifs, subscription: Int
-    let url: String
-    let username: String
-    let verified: Bool
-    let views: Int
+    let profileURL: String?
+    let publishedGifs, subscription: Int?
+    let url: String?
+    let username: String?
+    let verified: Bool?
+    let views: Int?
 
     enum CodingKeys: String, CodingKey {
         case creationtime, followers, following, gifs, name
@@ -67,12 +67,12 @@ struct User: Codable {
 
 // MARK: - Creator
 struct Creator: Codable {
-    let id, name: String
-    let followers, gifs: Int
-    let verified: Bool
-    let views: Int
-    let thumbnail: String
-    let poster: String
+    let id, name: String?
+    let followers, gifs: Int?
+    let verified: Bool?
+    let views: Int?
+    let thumbnail: String?
+    let poster: String?
     let preview: String?
     let avatarURL: String?
 

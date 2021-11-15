@@ -12,6 +12,10 @@ import UIKit
 class ReelsViewController: BaseViewController {
     
     private var coordinator: ReelsViewCoordinator!
+    
+    let refreshControl = UIRefreshControl()
+    
+    private var loadingData = false
 
     private var currentPage: Int = 0
     
@@ -26,7 +30,7 @@ class ReelsViewController: BaseViewController {
         let view = UIActivityIndicatorView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.startAnimating()
-        view.isHidden = false
+        view.isHidden = true
         return view
     }()
     
@@ -43,8 +47,15 @@ class ReelsViewController: BaseViewController {
         self.collectionView.setupView(self)
         self.collectionView.isPagingEnabled = true
         self.collectionView.showsVerticalScrollIndicator = false
-        self.collectionView.bounces = false
-        self.coordinator.load()
+        self.loadingData = true
+        self.coordinator.reloadAll()
+        
+        let layout = self.collectionView.collectionViewLayout
+        if let flowLayout = layout as? UICollectionViewFlowLayout {
+            flowLayout.estimatedItemSize = .zero
+            flowLayout.minimumLineSpacing = 0
+            flowLayout.minimumInteritemSpacing = 0
+        }
         
         self.view.addSubview(audioImageView)
         audioImageView.centerYAnchor.constraint(equalTo: self.collectionView.centerYAnchor).isActive = true
@@ -53,7 +64,20 @@ class ReelsViewController: BaseViewController {
         audioImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         audioImageView.tintColor = ColorLayout.default_grey
         
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
+        
+        let bottomRefresh = UIRefreshControl()
+        self.collectionView.bottomRefreshControl = bottomRefresh
+        collectionView.bottomRefreshControl?.beginRefreshing()
+        
+        
         NotificationCenter.default.addObserver(self, selector: #selector(onDidPressVolumeUp(_:)), name: .didPressVolumeUp, object: nil)
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        self.loadingView.isHidden = true
+        self.coordinator.reloadAll()
     }
     
     @objc func onDidPressVolumeUp(_ notification: Notification){
@@ -90,19 +114,19 @@ class ReelsViewController: BaseViewController {
     }
 }
 
-extension ReelsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ReelsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.coordinator.videos.count == 0 ? 0 : (self.coordinator.videos.count + 1)
+        return self.coordinator.videos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReelCollectionViewCell.className, for: indexPath) as! ReelCollectionViewCell
-        if indexPath.row == self.coordinator.videos.count {
-            cell.setupNotContentView()
-        }
-        else{
-            cell.setup(gif: self.coordinator.videos[indexPath.row], index: indexPath.row, playOnStart: indexPath.row == 0, isAudioOn: UserPreferences.shared.isAudioOn, delegate: self)
-        }
+        cell.setup(element: self.coordinator.videos[indexPath.row], index: indexPath.row, playOnStart: indexPath.row == 0, isAudioOn: UserPreferences.shared.isAudioOn, delegate: self)
         
         return cell
     }
@@ -110,6 +134,12 @@ extension ReelsViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let videoCell = (cell as? ReelCollectionViewCell) else { return }
         videoCell.player?.play()
+        let lastElement = self.coordinator.videos.count - 1
+        if !loadingData && indexPath.row == lastElement {
+            collectionView.bottomRefreshControl?.beginRefreshing()
+            loadingData = true
+            self.coordinator.loadMore()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -137,15 +167,10 @@ extension ReelsViewController: UICollectionViewDelegate, UICollectionViewDataSou
 
 extension ReelsViewController: ReelsViewControllerDelegate {
     func reloadView() {
-        let layout = self.collectionView.collectionViewLayout
-        if let flowLayout = layout as? UICollectionViewFlowLayout {
-            flowLayout.estimatedItemSize = CGSize(
-                width:  self.collectionView.frame.width,
-                height:  self.collectionView.frame.height
-            )
-            flowLayout.minimumLineSpacing = 0
-            flowLayout.minimumInteritemSpacing = 0
-        }
+        loadingView.isHidden = false
+        loadingData = false
+        refreshControl.endRefreshing()
+        collectionView.bottomRefreshControl?.endRefreshing()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
             self.collectionView.reloadData()
             self.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)

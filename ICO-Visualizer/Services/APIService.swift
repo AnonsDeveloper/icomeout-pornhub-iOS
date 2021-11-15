@@ -15,6 +15,7 @@ class APIService {
     
     private let baseUrl = "https://www.pornhub.com/webmasters"
     private let feedsUrl = "https://api.redgifs.com/v2/home/feeds"
+    private let tikUrl = "https://api.xxxtik.com/post/feed/by-key"
     
     private var retryCount: Int = 0
     private let maxRetry: Int = 3
@@ -229,6 +230,29 @@ class APIService {
             if let data = result.data{
                 do {
                     let response = try JSONDecoder().decode(FeedsResponse.self, from: data)
+                    completionHandler?(.success(response))
+                }
+                catch{
+                    completionHandler?(.failure(APIServiceError.decodeError(error)))
+                    print(data)
+                }
+            }
+            else{
+                completionHandler?(.failure(APIServiceError.noDataFound))
+            }
+        }
+    }
+    
+    func fetchTikFeeds(cursor: Int = 0, completionHandler: ((Result<TikResponse, Error>) -> Void)?){
+        let params: Parameters = ["cursor": cursor]
+        AF.request(self.tikUrl, method: .get, parameters: params).responseJSON { result in
+            if let error = result.error{
+                completionHandler?(.failure(error))
+                return
+            }
+            if let data = result.data{
+                do {
+                    let response = try JSONDecoder().decode(TikResponse.self, from: data)
                     completionHandler?(.success(response))
                 }
                 catch{

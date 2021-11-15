@@ -22,6 +22,7 @@ class ReelCollectionViewCell: UICollectionViewCell {
     var playerLayer:AVPlayerLayer!
     var player: AVQueuePlayer?
     
+    @IBOutlet weak var tagsLabel: UILabel!
     private var userUrl: URL?
     
     public var index: Int = 0
@@ -50,20 +51,35 @@ class ReelCollectionViewCell: UICollectionViewCell {
         self.notContentView.isHidden = false
     }
     
-    func setup(gif: HorizontalGIF, index: Int, playOnStart: Bool, isAudioOn: Bool, delegate: ReelsViewControllerDelegate){
+    func setup(element: ReelElement, index: Int, playOnStart: Bool, isAudioOn: Bool, delegate: ReelsViewControllerDelegate){
         notContentView.isHidden = true
         self.delegate = delegate
-        guard let url = URL(string: gif.urls.hd) else { return }
+        guard let url = URL(string: element.videoUrl ?? "") else { return }
         
-        if let avatarUrl = URL(string: gif.user.profileImageURL ?? ""){
-            userAvatarView.isHidden = false
-            userAvatarView.sd_setImage(with: avatarUrl, completed: nil)
+        //progressBar.isHidden = element.duration == nil
+        let avatarplaceholder = UIImage(named: "user_icon")
+        
+        if let avatarUrl = URL(string: element.avatarUrl ?? ""){
+            userAvatarView.sd_setImage(with: avatarUrl, completed: {image,_,_,_ in
+                if let image = image {
+                    self.userAvatarView.image = image
+                }
+                else{
+                    self.userAvatarView.image = avatarplaceholder
+                }
+            })
         }
         else{
-            userAvatarView.isHidden = true
+            userAvatarView.image = avatarplaceholder
         }
-        usernameLabel.text = "@\(gif.user.username)"
+        usernameLabel.text = "@\(element.username ?? "")"
         
+        if element.tags?.count ?? 0 > 0, let joinedString = element.tags?.joined(separator: " #") {
+            tagsLabel.text = "#\(joinedString)"
+        }
+        else{
+            tagsLabel.text = ""
+        }
 
         
         self.index = index
@@ -97,14 +113,14 @@ class ReelCollectionViewCell: UICollectionViewCell {
         
         player?.addPeriodicTimeObserver(forInterval: CMTime(value: CMTimeValue(1), timescale: 2), queue: DispatchQueue.main) {[weak self] (progressTime) in
             let currentTime = Float(CMTimeGetSeconds(progressTime))
-            let progress = self?.normalize(val: currentTime, min: 0, max: Float(gif.duration)) ?? 0
+            let progress = self?.normalize(val: currentTime, min: 0, max: Float(CMTimeGetSeconds(playerItem.duration))) ?? 0
             self?.progressBar.setProgress(progress, animated: true)
         }
         
-        verifiedIcon.isHidden = !gif.user.verified
+        verifiedIcon.isHidden = !(element.verified ?? false)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            
+        DispatchQueue.main.async {//After(deadline: .now() + 0.2) {
+            self.playerLayer.videoGravity = (element.width ?? 1 < element.height ?? 0) ? .resizeAspectFill : .resizeAspect
             self.userAvatarView.layer.cornerRadius = self.userAvatarView.frame.width / 2
             self.userAvatarView.layer.borderWidth = 1
             self.userAvatarView.layer.borderColor = UIColor.white.cgColor
@@ -119,7 +135,7 @@ class ReelCollectionViewCell: UICollectionViewCell {
             for recognizer in self.userAvatarView.gestureRecognizers ?? [] {
                 self.userAvatarView.removeGestureRecognizer(recognizer)
             }
-            if let profileUrl = URL(string: gif.user.profileURL) {
+            if let profileUrl = URL(string: element.externalUrl ?? "") {
                 self.userUrl = profileUrl
                 let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
                 
@@ -134,14 +150,14 @@ class ReelCollectionViewCell: UICollectionViewCell {
         viewsView.bottomAnchor.constraint(equalTo: self.userAvatarView.topAnchor, constant: -24).isActive = true
         viewsView.centerXAnchor.constraint(equalTo: self.userAvatarView.centerXAnchor).isActive = true
         viewsView.widthAnchor.constraint(equalToConstant: self.userAvatarView.frame.width - 12).isActive = true
-        viewsView.textLabel.text = Double(gif.views).shortStringRepresentation
+        viewsView.textLabel.text = Double(element.views ?? 0).shortStringRepresentation
         viewsView.imageView.image = UIImage(named: "views_icon")
         
         self.contentView.addSubview(self.likesView)
         likesView.bottomAnchor.constraint(equalTo: self.viewsView.topAnchor, constant: -24).isActive = true
         likesView.centerXAnchor.constraint(equalTo: self.userAvatarView.centerXAnchor).isActive = true
         likesView.widthAnchor.constraint(equalToConstant: self.userAvatarView.frame.width - 12).isActive = true
-        likesView.textLabel.text = Double(gif.likes).shortStringRepresentation
+        likesView.textLabel.text = Double(element.likes ?? 0).shortStringRepresentation
         likesView.imageView.image = UIImage(named: "like_icon")
         
         
