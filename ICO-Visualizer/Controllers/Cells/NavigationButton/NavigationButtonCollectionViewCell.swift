@@ -1,6 +1,6 @@
 //
 //  NavigationButtonViewController.swift
-//  Crypto Bot
+//  ICO-visualizer
 //
 //  Created by Anonymous on 28/09/21.
 //

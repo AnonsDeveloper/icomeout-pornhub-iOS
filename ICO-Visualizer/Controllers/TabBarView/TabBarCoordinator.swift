@@ -1,6 +1,6 @@
 //
 //  TabBarCoordinator.swift
-//  Crypto Bot
+//  ICO-visualizer
 //
 //  Created by Anonymous on 24/09/21.
 //

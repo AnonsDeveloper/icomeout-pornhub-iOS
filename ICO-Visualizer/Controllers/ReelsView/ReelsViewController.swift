@@ -185,17 +185,15 @@ extension ReelsViewController: UICollectionViewDelegate, UICollectionViewDataSou
 }
 
 extension ReelsViewController: ReelsViewControllerDelegate {
-    func reloadView() {
+    func reloadView(newIndexs: [IndexPath]) {
         loadingView.isHidden = false
         loadingData = false
         refreshControl.endRefreshing()
         collectionView.bottomRefreshControl?.endRefreshing()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
-            self.collectionView.reloadData()
-//            if self.coordinator.videos.count > 0{
-//                self.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
-//            }
-            
+            self.collectionView.performBatchUpdates {
+                self.collectionView.insertItems(at: newIndexs)
+            }
         })
     }
     

@@ -1,6 +1,6 @@
 //
 //  TabBarViewController.swift
-//  Crypto Bot
+//  ICO-visualizer
 //
 //  Created by Anonymous on 21/09/21.
 //

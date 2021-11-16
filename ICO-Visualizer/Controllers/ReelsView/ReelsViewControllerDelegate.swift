@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ReelsViewControllerDelegate {
-    func reloadView()
+    func reloadView(newIndexs: [IndexPath])
     func reloadCollection()
     func openUrl(url: URL)
     func switchSound()

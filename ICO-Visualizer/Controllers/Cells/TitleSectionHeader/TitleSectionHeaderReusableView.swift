@@ -1,6 +1,6 @@
 //
 //  TitleSectionHeaderReusableView.swift
-//  Crypto Bot
+//  ICO-visualizer
 //
 //  Created by Anonymous on 22/10/21.
 //

@@ -34,37 +34,47 @@ class ReelsViewCoordinator {
         APIService.shared.fetchFeeds { response in
             switch response {
             case .success(let response):
+                var row = self.videos.count - 1
+                var result: [ReelElement] = []
                 for item in response.verticalGifs {
                     if URL(string: item.urls?.hd ?? "") != nil{
-                        self.videos.append(ReelElement(videoUrl: item.urls?.hd, username: item.user?.username, avatarUrl: item.user?.profileImageURL, likes: item.likes, views: item.views, tags: item.tags, verified: item.verified, externalUrl: item.user?.profileURL, duration: item.duration, width: item.width, height: item.height))
+                        result.append(ReelElement(videoUrl: item.urls?.hd, username: item.user?.username, avatarUrl: item.user?.profileImageURL, likes: item.likes, views: item.views, tags: item.tags, verified: item.verified, externalUrl: item.user?.profileURL, duration: item.duration, width: item.width, height: item.height))
                     }
                 }
                 for item in response.hotGifs {
                     if URL(string: item.urls?.hd ?? "") != nil{
-                        self.videos.append(ReelElement(videoUrl: item.urls?.hd, username: item.user?.username, avatarUrl: item.user?.profileImageURL, likes: item.likes, views: item.views, tags: item.tags, verified: item.verified, externalUrl: item.user?.profileURL, duration: item.duration, width: item.width, height: item.height))
+                        result.append(ReelElement(videoUrl: item.urls?.hd, username: item.user?.username, avatarUrl: item.user?.profileImageURL, likes: item.likes, views: item.views, tags: item.tags, verified: item.verified, externalUrl: item.user?.profileURL, duration: item.duration, width: item.width, height: item.height))
                     }
                 }
                 for item in response.verifiedGifs {
                     if URL(string: item.urls?.hd ?? "") != nil{
-                        self.videos.append(ReelElement(videoUrl: item.urls?.hd, username: item.user?.username, avatarUrl: item.user?.profileImageURL, likes: item.likes, views: item.views, tags: item.tags, verified: item.verified, externalUrl: item.user?.profileURL, duration: item.duration, width: item.width, height: item.height))
+                        result.append(ReelElement(videoUrl: item.urls?.hd, username: item.user?.username, avatarUrl: item.user?.profileImageURL, likes: item.likes, views: item.views, tags: item.tags, verified: item.verified, externalUrl: item.user?.profileURL, duration: item.duration, width: item.width, height: item.height))
                     }
                 }
                 for item in response.soundGifs {
                     if URL(string: item.urls?.hd ?? "") != nil{
-                        self.videos.append(ReelElement(videoUrl: item.urls?.hd, username: item.user?.username, avatarUrl: item.user?.profileImageURL, likes: item.likes, views: item.views, tags: item.tags, verified: item.verified, externalUrl: item.user?.profileURL, duration: item.duration, width: item.width, height: item.height))
+                        result.append(ReelElement(videoUrl: item.urls?.hd, username: item.user?.username, avatarUrl: item.user?.profileImageURL, likes: item.likes, views: item.views, tags: item.tags, verified: item.verified, externalUrl: item.user?.profileURL, duration: item.duration, width: item.width, height: item.height))
                     }
                 }
                 for item in response.horizontalGifs {
                     if URL(string: item.urls?.hd ?? "") != nil{
-                        self.videos.append(ReelElement(videoUrl: item.urls?.hd, username: item.user?.username, avatarUrl: item.user?.profileImageURL, likes: item.likes, views: item.views, tags: item.tags, verified: item.verified, externalUrl: item.user?.profileURL, duration: item.duration, width: item.width, height: item.height))
+                        result.append(ReelElement(videoUrl: item.urls?.hd, username: item.user?.username, avatarUrl: item.user?.profileImageURL, likes: item.likes, views: item.views, tags: item.tags, verified: item.verified, externalUrl: item.user?.profileURL, duration: item.duration, width: item.width, height: item.height))
                     }
                 }
                 for item in response.longGifs {
                     if URL(string: item.urls?.hd ?? "") != nil{
-                        self.videos.append(ReelElement(videoUrl: item.urls?.hd, username: item.user?.username, avatarUrl: item.user?.profileImageURL, likes: item.likes, views: item.views, tags: item.tags, verified: item.verified, externalUrl: item.user?.profileURL, duration: item.duration, width: item.width, height: item.height))
+                        result.append(ReelElement(videoUrl: item.urls?.hd, username: item.user?.username, avatarUrl: item.user?.profileImageURL, likes: item.likes, views: item.views, tags: item.tags, verified: item.verified, externalUrl: item.user?.profileURL, duration: item.duration, width: item.width, height: item.height))
                     }
                 }
-                self.delegate.reloadView()
+                self.videos.append(contentsOf: result)
+                var indexPathsToReload = [IndexPath]()
+                let section = 0
+                for _ in result {
+                    let indexPath = IndexPath(row: row, section: section)
+                    row+=1
+                    indexPathsToReload.append(indexPath)
+                }
+                self.delegate.reloadView(newIndexs: indexPathsToReload)
             case .failure(let error):
                 print(error)
             }
@@ -75,22 +85,32 @@ class ReelsViewCoordinator {
         APIService.shared.fetchTikFeeds(cursor: cursor) { response in
             switch response {
             case .success(let result):
-                if let posts = result.data?.posts {
-                    for post in posts {
-                        var url: String? = nil
-                        if post.redGifsVideoURL != nil {
-                            url = post.redGifsVideoURL
-                        }
-                        else if post.vimeoURI != nil {
-                            url = post.vimeoURI
-                        }
-                        let reel = ReelElement(videoUrl: url, username: post.author?.name, avatarUrl: nil, likes: post.count?.reactions, views: post.reactionInitial, tags: post.tags?.map({ $0.name ?? "" }), verified: post.author?.emailVerified, externalUrl: post.source, duration: nil, width: post.width, height: post.height)
-                        if url != nil {
-                            self.videos.append(reel)
-                        }
+                guard let posts = result.data?.posts else {
+                    return
+                }
+                var row = self.videos.count - 1
+                for post in posts {
+                    var url: String? = nil
+                    if post.redGifsVideoURL != nil {
+                        url = post.redGifsVideoURL
+                    }
+                    else if post.vimeoURI != nil {
+                        url = post.vimeoURI
+                    }
+                    let reel = ReelElement(videoUrl: url, username: post.author?.name, avatarUrl: nil, likes: post.count?.reactions, views: post.reactionInitial, tags: post.tags?.map({ $0.name ?? "" }), verified: post.author?.emailVerified, externalUrl: post.source, duration: nil, width: post.width, height: post.height)
+                    if url != nil {
+                        self.videos.append(reel)
                     }
                 }
-                self.delegate.reloadView()
+                
+                var indexPathsToReload = [IndexPath]()
+                let section = 0
+                for _ in posts {
+                    let indexPath = IndexPath(row: row, section: section)
+                    row+=1
+                    indexPathsToReload.append(indexPath)
+                }
+                self.delegate.reloadView(newIndexs: indexPathsToReload)
             case .failure(let error):
                 print(error)
             }
@@ -101,6 +121,7 @@ class ReelsViewCoordinator {
         APIService.shared.fetchTikPornFeeds(count: 7) { response in
             switch response {
             case .success(let result):
+                var row = self.videos.count - 1
                 for item in result {
                     var username: String = ""
                     if let producer = item.producerName{
@@ -112,7 +133,15 @@ class ReelsViewCoordinator {
                     let reel = ReelElement(videoUrl: item.fileurl, username: username, avatarUrl: nil, likes: Int(item.likeCount ?? "0"), views: nil, tags: item.tags?.map({ $0.name ?? "" }), verified: nil, externalUrl: nil, duration: nil, width: nil, height: nil)
                     self.videos.append(reel)
                 }
-                self.delegate.reloadView()
+                var indexPathsToReload = [IndexPath]()
+                let section = 0
+                for _ in result {
+                    let indexPath = IndexPath(row: row, section: section)
+                    row+=1
+                    indexPathsToReload.append(indexPath)
+                }
+                
+                self.delegate.reloadView(newIndexs: indexPathsToReload)
             case .failure(let error):
                 print(error)
             }

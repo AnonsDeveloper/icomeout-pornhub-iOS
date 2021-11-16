@@ -225,7 +225,7 @@ class StarViewController: BaseViewController {
         self.collectionView.isHidden = !(self.contentType == ContentType.videos)
         self.photosCollectionView.isHidden = !(self.contentType == ContentType.images)
         if self.photosCollectionView.isHidden == false  {
-            if let imageError = self.lastImagesError {
+            if let imageError = self.lastImagesError, self.coordinator.images.count == 0 {
                 self.errorTextLabel.isHidden = false
                 self.errorTextLabel.text = imageError
             }
@@ -235,7 +235,7 @@ class StarViewController: BaseViewController {
         }
        
         if self.collectionView.isHidden == false {
-            if let videoError = self.lastVideoError {
+            if let videoError = self.lastVideoError{
                 self.errorTextLabel.isHidden = false
                 self.errorTextLabel.text = videoError
             }
@@ -435,7 +435,7 @@ extension StarViewController: StarViewControllerDelegate{
             self.photosCollectionView.reloadData()
             self.lastImagesError = message
             self.photosCollectionView.bottomRefreshControl?.endRefreshing()
-            if let message = message, self.contentType == .images {
+            if let message = message, self.contentType == .images && self.coordinator.images.count == 0 {
                 self.errorTextLabel.isHidden = false
                 self.errorTextLabel.text = message
             }
