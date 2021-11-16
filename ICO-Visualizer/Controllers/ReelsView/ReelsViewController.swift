@@ -104,6 +104,18 @@ class ReelsViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.playVideoIfNeeded()
+    }
+    
+    func pauseVideoIfNeeded(){
+        for cell in self.collectionView.visibleCells {
+            if let videoCell = (cell as? ReelCollectionViewCell){
+                videoCell.player?.pause()
+            }
+        }
+    }
+    
+    func playVideoIfNeeded(){
         for cell in self.collectionView.visibleCells {
             if let videoCell = (cell as? ReelCollectionViewCell){
                 if videoCell.index == currentPage {

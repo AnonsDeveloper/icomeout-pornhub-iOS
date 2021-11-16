@@ -76,6 +76,18 @@ class TabBarViewController: UIViewController {
         let vc = SettingsViewController()
         self.mainNavigationController.pushViewController(vc, animated: true)
     }
+    
+    func pauseReelsIfNeeded(){
+        if let vc = mainNavigationController.topViewController as? ReelsViewController {
+            vc.pauseVideoIfNeeded()
+        }
+    }
+    
+    func playReelsIfNeeded(){
+        if let vc = mainNavigationController.topViewController as? ReelsViewController {
+            vc.playVideoIfNeeded()
+        }
+    }
 }
 
 extension TabBarViewController: TabBarViewControllerDelegate {
