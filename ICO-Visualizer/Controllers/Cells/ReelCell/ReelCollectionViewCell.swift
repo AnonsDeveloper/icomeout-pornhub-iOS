@@ -17,6 +17,7 @@ class ReelCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var userAvatarView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     
+    @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var verifiedIcon: UIImageView!
     var playerLooper: AVPlayerLooper?
     var playerLayer:AVPlayerLayer!
@@ -55,7 +56,7 @@ class ReelCollectionViewCell: UICollectionViewCell {
         notContentView.isHidden = true
         self.delegate = delegate
         guard let url = URL(string: element.videoUrl ?? "") else { return }
-        
+        sourceLabel.text = UserPreferences.shared.reelSource.rawValue
         //progressBar.isHidden = element.duration == nil
         let avatarplaceholder = UIImage(named: "user_icon")
         
@@ -114,13 +115,13 @@ class ReelCollectionViewCell: UICollectionViewCell {
         player?.addPeriodicTimeObserver(forInterval: CMTime(value: CMTimeValue(1), timescale: 2), queue: DispatchQueue.main) {[weak self] (progressTime) in
             let currentTime = Float(CMTimeGetSeconds(progressTime))
             let progress = self?.normalize(val: currentTime, min: 0, max: Float(CMTimeGetSeconds(playerItem.duration))) ?? 0
-            self?.progressBar.setProgress(progress, animated: true)
+            self?.progressBar.setProgress(progress, animated: progress == 0 ? false : true)
         }
         
         verifiedIcon.isHidden = !(element.verified ?? false)
         
         DispatchQueue.main.async {//After(deadline: .now() + 0.2) {
-            self.playerLayer.videoGravity = (element.width ?? 1 < element.height ?? 0) ? .resizeAspectFill : .resizeAspect
+            self.playerLayer.videoGravity = (element.width ?? 0 < element.height ?? 1) ? .resizeAspectFill : .resizeAspect
             self.userAvatarView.layer.cornerRadius = self.userAvatarView.frame.width / 2
             self.userAvatarView.layer.borderWidth = 1
             self.userAvatarView.layer.borderColor = UIColor.white.cgColor
@@ -160,8 +161,9 @@ class ReelCollectionViewCell: UICollectionViewCell {
         likesView.textLabel.text = Double(element.likes ?? 0).shortStringRepresentation
         likesView.imageView.image = UIImage(named: "like_icon")
         
+        self.viewsView.isHidden = element.views == nil
+        self.likesView.isHidden = element.likes == nil
         
-
     }
     
     func normalize(val: Float, min: Float, max: Float) -> Float {

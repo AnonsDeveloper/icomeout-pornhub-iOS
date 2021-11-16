@@ -1,7 +1,9 @@
 PODS:
   - Alamofire (5.2.1)
   - CCBottomRefreshControl (0.5.2)
-  - DTPhotoViewerController (3.1.0)
+  - ImageViewer.swift (3.3.3)
+  - ImageViewer.swift/Fetcher (3.3.3):
+    - SDWebImage
   - SDWebImage (5.8.0):
     - SDWebImage/Core (= 5.8.0)
   - SDWebImage/Core (5.8.0)
@@ -10,7 +12,8 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - CCBottomRefreshControl
-  - DTPhotoViewerController
+  - ImageViewer.swift (~> 3.0)
+  - ImageViewer.swift/Fetcher (~> 3.0)
   - SDWebImage
   - SVPinView (~> 1.0)
 
@@ -18,17 +21,17 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - CCBottomRefreshControl
-    - DTPhotoViewerController
+    - ImageViewer.swift
     - SDWebImage
     - SVPinView
 
 SPEC CHECKSUMS:
   Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
   CCBottomRefreshControl: 389780b4488321c91d18f66a6da5ef9606df6de5
-  DTPhotoViewerController: 2b5e64792ee89fcab1f154538577d1856e04e15b
+  ImageViewer.swift: 3dbb74a68ac4bdd6cdd585b3128dae17ccd733e5
   SDWebImage: 84000f962cbfa70c07f19d2234cbfcf5d779b5dc
   SVPinView: 9b538d0ba68cdb092afe4f0f67ec84cbed079466
 
-PODFILE CHECKSUM: 3f1a79c873db10b44f7e34126368f4a7f135611e
+PODFILE CHECKSUM: cfb7a224371ae02593563e3525145a1a7767493a
 
 COCOAPODS: 1.11.2

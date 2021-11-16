@@ -105,6 +105,9 @@
 		AD817116273ADFAC00F1E22F /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD817115273ADFAC00F1E22F /* Date+Extensions.swift */; };
 		AD817118273AE01C00F1E22F /* UITapGestureRecognizer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD817117273AE01C00F1E22F /* UITapGestureRecognizer+Extensions.swift */; };
 		AD81711A273AE05B00F1E22F /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD817119273AE05B00F1E22F /* UIViewController+Extensions.swift */; };
+		AD82BEAE27431C22003AB90A /* TikPornResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD82BEAD27431C22003AB90A /* TikPornResponse.swift */; };
+		AD82BEB127432696003AB90A /* ReelSourceSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD82BEB027432696003AB90A /* ReelSourceSelectionViewController.swift */; };
+		AD82BEB32743B6DB003AB90A /* ImagesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD82BEB22743B6DA003AB90A /* ImagesResponse.swift */; };
 		AD8B0D68251E24B000566B9B /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B0D67251E24B000566B9B /* BaseNavigationController.swift */; };
 		ADD4DBA427329667005ECF79 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD4DBA127329667005ECF79 /* TabBarCoordinator.swift */; };
 		ADD4DBA527329667005ECF79 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD4DBA227329667005ECF79 /* TabBarViewController.swift */; };
@@ -217,6 +220,9 @@
 		AD817115273ADFAC00F1E22F /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Date+Extensions.swift"; path = "ICO-Visualizer/Extensions/Date+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		AD817117273AE01C00F1E22F /* UITapGestureRecognizer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UITapGestureRecognizer+Extensions.swift"; path = "ICO-Visualizer/Extensions/UITapGestureRecognizer+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		AD817119273AE05B00F1E22F /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIViewController+Extensions.swift"; path = "ICO-Visualizer/Extensions/UIViewController+Extensions.swift"; sourceTree = SOURCE_ROOT; };
+		AD82BEAD27431C22003AB90A /* TikPornResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TikPornResponse.swift; path = "ICO-Visualizer/Models/TikPornResponse.swift"; sourceTree = SOURCE_ROOT; };
+		AD82BEB027432696003AB90A /* ReelSourceSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReelSourceSelectionViewController.swift; path = "ICO-Visualizer/Controllers/ReelSourceSelection/ReelSourceSelectionViewController.swift"; sourceTree = SOURCE_ROOT; };
+		AD82BEB22743B6DA003AB90A /* ImagesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImagesResponse.swift; path = "ICO-Visualizer/Models/ImagesResponse.swift"; sourceTree = SOURCE_ROOT; };
 		AD8B0D67251E24B000566B9B /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		ADD4DBA127329667005ECF79 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		ADD4DBA227329667005ECF79 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -544,6 +550,14 @@
 			path = StarView;
 			sourceTree = "<group>";
 		};
+		AD82BEAF27432678003AB90A /* ReelSourceSelection */ = {
+			isa = PBXGroup;
+			children = (
+				AD82BEB027432696003AB90A /* ReelSourceSelectionViewController.swift */,
+			);
+			path = ReelSourceSelection;
+			sourceTree = "<group>";
+		};
 		ADD4DBA027329667005ECF79 /* TabBarView */ = {
 			isa = PBXGroup;
 			children = (
@@ -557,6 +571,7 @@
 		ADD4DBA72732966D005ECF79 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AD82BEAF27432678003AB90A /* ReelSourceSelection */,
 				AD51F786273BF0560006DCEB /* ReelsView */,
 				AD2E2B4327374AD600471293 /* FakeView */,
 				AD2E2B3E2737491900471293 /* LeftImageCaption */,
@@ -633,6 +648,8 @@
 				AD51F784273BEE2A0006DCEB /* FeedsResponse.swift */,
 				AD581926273D478900CFBDC5 /* TikResponse.swift */,
 				AD656F48274289E9007AF361 /* ReelElement.swift */,
+				AD82BEAD27431C22003AB90A /* TikPornResponse.swift */,
+				AD82BEB22743B6DA003AB90A /* ImagesResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -800,6 +817,7 @@
 				AD5BC8782732E1A5004898BB /* StarsViewController.swift in Sources */,
 				AD817112273ADF4600F1E22F /* Notification+Extensions.swift in Sources */,
 				AD581927273D478900CFBDC5 /* TikResponse.swift in Sources */,
+				AD82BEAE27431C22003AB90A /* TikPornResponse.swift in Sources */,
 				AD2E2B402737491900471293 /* LeftImageCaptionTableViewCell.swift in Sources */,
 				ADD4DBA627329667005ECF79 /* TabBarViewControllerDelegate.swift in Sources */,
 				AD13B92727352B6D006676C2 /* BannerCollectionViewCell.swift in Sources */,
@@ -828,6 +846,7 @@
 				AD5BC8592732A355004898BB /* VideoCollectionViewCell.swift in Sources */,
 				AD817116273ADFAC00F1E22F /* Date+Extensions.swift in Sources */,
 				AD2E2B3D27373F9200471293 /* PinSetupViewController.swift in Sources */,
+				AD82BEB127432696003AB90A /* ReelSourceSelectionViewController.swift in Sources */,
 				AD5BC85327329EBD004898BB /* BaseViewController.swift in Sources */,
 				AD2E2B4227374A1A00471293 /* PokemonList.swift in Sources */,
 				AD5BC8732732DBD8004898BB /* ColorLayout.swift in Sources */,
@@ -848,6 +867,7 @@
 				AD5BC84C27329E15004898BB /* APIServiceError.swift in Sources */,
 				AD5BC8672732B839004898BB /* CategoriesViewDelegate.swift in Sources */,
 				AD51F788273BF0630006DCEB /* ReelsViewController.swift in Sources */,
+				AD82BEB32743B6DB003AB90A /* ImagesResponse.swift in Sources */,
 				AD5BC85127329E9E004898BB /* HomeViewCoordinator.swift in Sources */,
 				AD5BC84527329ACC004898BB /* UICollectionView+Extensions.swift in Sources */,
 				AD51F785273BEE2A0006DCEB /* FeedsResponse.swift in Sources */,

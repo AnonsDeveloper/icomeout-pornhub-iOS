@@ -8,7 +8,8 @@ target 'ICO-visualizer' do
   # Pods for ICO-visualizer
   pod 'Alamofire'
   pod 'SDWebImage'
-  pod "DTPhotoViewerController"
+  pod 'ImageViewer.swift', '~> 3.0'
+  pod 'ImageViewer.swift/Fetcher', '~> 3.0'
   pod 'CCBottomRefreshControl'
   pod 'SVPinView', '~> 1.0'
 end

@@ -144,6 +144,15 @@ class PinSetupViewController: UIViewController {
                     NotificationCenter.default.post(name: .didEnterFakePin, object: nil)
                     self?.dismiss(animated: true, completion: nil)
                 }
+                else{
+                    self?.descriptionLabel.text = "Wrong PIN"
+                }
+            }
+        }
+        
+        insertPinView.didChangeCallback = { [weak self] pin in
+            if self?.pinType == .auth {
+                self?.descriptionLabel.text = ""
             }
         }
         

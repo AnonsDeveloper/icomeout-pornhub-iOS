@@ -10,12 +10,21 @@ import Foundation
 import Alamofire
 
 class APIService {
+    
+    public enum ReelSource: String {
+        case redgifs = "redgifs"
+        case xxxtik = "xxxtik"
+        case tikporn = "tikporn"
+    }
 
     public static let shared = APIService()
     
     private let baseUrl = "https://www.pornhub.com/webmasters"
     private let feedsUrl = "https://api.redgifs.com/v2/home/feeds"
     private let tikUrl = "https://api.xxxtik.com/post/feed/by-key"
+    private let tikPornUrl = "https://tik.porn/api/video/getrecommendation"
+    private let searchImagesUrl = "https://www.pornpics.com/search/srch.php"
+    
     
     private var retryCount: Int = 0
     private let maxRetry: Int = 3
@@ -196,29 +205,48 @@ class APIService {
         }
     }
     
-    func getStarImages(starName: String, completionHandler: ((Result<[String], Error>) -> Void)?){
-        let strUrl = "https://www.pornpictureshq.com/"
-        let params: Parameters = [ "q" :  starName.lowercased().replacingOccurrences(of: " ", with: "+")]
-        AF.request(strUrl, method: .get, parameters: params).responseString { response in
-            if let error = response.error {
+    func getStarImages(offSet: Int = 1, starName: String, completionHandler: ((Result<ImagesResponse, Error>) -> Void)?){
+        let limit = 20
+        let params: Parameters = [ "q" :  starName.lowercased().replacingOccurrences(of: " ", with: "+"), "limit": limit, "offset": limit * offSet]
+        AF.request(self.searchImagesUrl, method: .get, parameters: params).responseJSON { response in
+            if let error = response.error{
                 completionHandler?(.failure(error))
-                print(error)
                 return
             }
-            if let html = response.value {
-                let groups = html.capturedGroups(withRegex: "data-src=[\"\']([^\"\']*)[\"\']").filter({ $0.contains(".jpg") }).map({ $0.replacingOccurrences(of: "data-src=", with: "").replacingOccurrences(of: "300x", with: "600x").replacingOccurrences(of: "\\", with: "").replacingOccurrences(of: "\"", with: "") })
-                var res: [String] = []
-                for item in groups{
-                    if !res.contains(item) {
-                        res.append(item)
-                    }
+            if let data = response.data{
+                do {
+                    let response = try JSONDecoder().decode(ImagesResponse.self, from: data)
+                    completionHandler?(.success(response))
                 }
-                completionHandler?(.success(res))
+                catch{
+                    completionHandler?(.failure(APIServiceError.decodeError(error)))
+                    print(data)
+                }
             }
-            else {
+            else{
                 completionHandler?(.failure(APIServiceError.noDataFound))
             }
         }
+//        AF.request(self.searchImagesUrl, method: .get, parameters: params).responseString { response in
+//            if let error = response.error {
+//                completionHandler?(.failure(error))
+//                print(error)
+//                return
+//            }
+//            if let html = response.value {
+//                let groups = html.capturedGroups(withRegex: "data-src=[\"\']([^\"\']*)[\"\']").filter({ $0.contains(".jpg") }).map({ $0.replacingOccurrences(of: "data-src=", with: "").replacingOccurrences(of: "300x", with: "600x").replacingOccurrences(of: "\\", with: "").replacingOccurrences(of: "\"", with: "") })
+//                var res: [String] = []
+//                for item in groups{
+//                    if !res.contains(item) {
+//                        res.append(item)
+//                    }
+//                }
+//                completionHandler?(.success(res))
+//            }
+//            else {
+//                completionHandler?(.failure(APIServiceError.noDataFound))
+//            }
+//        }
     }
     
     func fetchFeeds(completionHandler: ((Result<FeedsResponse, Error>) -> Void)?){
@@ -263,6 +291,31 @@ class APIService {
             else{
                 completionHandler?(.failure(APIServiceError.noDataFound))
             }
+        }
+    }
+    
+    func fetchTikPornFeeds(count: Int = 3, completionHandler: ((Result<[TikPornPost], Error>) -> Void)?){
+        let dispach = DispatchGroup()
+        var videos: [TikPornPost] = []
+        for n in 0...count {
+            dispach.enter()
+            AF.request(self.tikPornUrl, method: .post).responseJSON { result in
+                if let data = result.data{
+                    do {
+                        let response = try JSONDecoder().decode(TikPornResponse.self, from: data)
+                        if let datas = response.data {
+                            videos.append(contentsOf: datas)
+                        }
+                    }
+                    catch{
+                        print(error)
+                    }
+                }
+                dispach.leave()
+            }
+        }
+        dispach.notify(queue: .main) {
+            completionHandler?(.success(videos))
         }
     }
 }

@@ -11,6 +11,18 @@ import UIKit
 class UserPreferences{
     static let shared = UserPreferences()
     
+    var reelSource: APIService.ReelSource {
+        get{
+            if let str = UserDefaults.standard.string(forKey: "reelSource"){
+                return APIService.ReelSource(rawValue: str) ?? APIService.ReelSource.redgifs
+            }
+            return APIService.ReelSource.redgifs
+        }
+        set{
+            UserDefaults.standard.set(newValue.rawValue, forKey: "reelSource")
+        }
+    }
+    
     var isAudioOn: Bool {
         get{
             if UserDefaults.standard.object(forKey: "isAudioOn") == nil {

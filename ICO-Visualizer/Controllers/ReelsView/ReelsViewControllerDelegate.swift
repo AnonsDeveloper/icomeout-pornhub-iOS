@@ -10,7 +10,7 @@ import Foundation
 
 protocol ReelsViewControllerDelegate {
     func reloadView()
-    
+    func reloadCollection()
     func openUrl(url: URL)
     func switchSound()
 }

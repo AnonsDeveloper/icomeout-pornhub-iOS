@@ -15,25 +15,17 @@ class StarViewCoordinator {
     public var star: Star!
     public var images: [String] = []
     
-    private var page: Int = 1
+    private var videoPage: Int = 1
+    private var imagesPage: Int = 1
     
     init(_ delegate: StarViewControllerDelegate) {
         self.delegate = delegate
         self.star = delegate.getStar()
     }
     
-    func load(){
-        APIService.shared.getStarImages(starName: self.star.starName!) { response in
-            switch response {
-            case .success(let res):
-                self.images = res
-                self.delegate.reloadImages(res.count == 0 ? "No images found for \(self.star.starName!) pornstar :(" : nil)
-            case .failure(let error):
-                print(error)
-                self.delegate.reloadImages(error.localizedDescription)
-            }
-        }
-        APIService.shared.getStarVideos(starName: self.star.starName!, page: self.page, completionHandler: { result in
+
+    func loadVideos(){
+        APIService.shared.getStarVideos(starName: self.star.starName!, page: self.videoPage, completionHandler: { result in
             switch result {
             case .success(let videos):
                 if self.star.starVideos == nil {
@@ -58,8 +50,26 @@ class StarViewCoordinator {
         })
     }
     
-    func fetchNext(){
-        self.page += 1
-        self.load()
+    func loadImages(){
+        APIService.shared.getStarImages(offSet: self.imagesPage, starName: self.star.starName!) { response in
+            switch response {
+            case .success(let res):
+                self.images.append(contentsOf: res.map({ $0.tURL460 ?? "" }))
+                self.delegate.reloadImages(res.count == 0 ? "No images found for \(self.star.starName!) pornstar :(" : nil)
+            case .failure(let error):
+                print(error)
+                self.delegate.reloadImages(error.localizedDescription)
+            }
+        }
+    }
+    
+    func fetchNextVideos(){
+        self.videoPage += 1
+        self.loadVideos()
+    }
+    
+    func fetchNextImages() {
+        self.imagesPage += 1
+        self.loadImages()
     }
 }

@@ -73,11 +73,18 @@ class ReelsViewController: BaseViewController {
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(onDidPressVolumeUp(_:)), name: .didPressVolumeUp, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidChangePreferences(_:)), name: .didChangeReelPreference, object: nil)
     }
     
     @objc func refresh(_ sender: AnyObject) {
         self.loadingView.isHidden = true
         self.coordinator.reloadAll()
+    }
+    
+    @objc func onDidChangePreferences(_ notification: Notification){
+        DispatchQueue.main.async {
+            self.refresh(self)
+        }
     }
     
     @objc func onDidPressVolumeUp(_ notification: Notification){
@@ -134,12 +141,6 @@ extension ReelsViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let videoCell = (cell as? ReelCollectionViewCell) else { return }
         videoCell.player?.play()
-        let lastElement = self.coordinator.videos.count - 1
-        if !loadingData && indexPath.row == lastElement {
-            collectionView.bottomRefreshControl?.beginRefreshing()
-            loadingData = true
-            self.coordinator.loadMore()
-        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -162,6 +163,12 @@ extension ReelsViewController: UICollectionViewDelegate, UICollectionViewDataSou
                 }
             }
         }
+        let lastElement = self.coordinator.videos.count - 2
+        if !loadingData && self.currentPage == lastElement {
+            collectionView.bottomRefreshControl?.beginRefreshing()
+            loadingData = true
+            self.coordinator.loadMore()
+        }
     }
 }
 
@@ -173,7 +180,10 @@ extension ReelsViewController: ReelsViewControllerDelegate {
         collectionView.bottomRefreshControl?.endRefreshing()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
             self.collectionView.reloadData()
-            self.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+//            if self.coordinator.videos.count > 0{
+//                self.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+//            }
+            
         })
     }
     
@@ -214,5 +224,9 @@ extension ReelsViewController: ReelsViewControllerDelegate {
         } completion: { completed in
             
         }
+    }
+    
+    func reloadCollection() {
+        self.collectionView.reloadData()
     }
 }

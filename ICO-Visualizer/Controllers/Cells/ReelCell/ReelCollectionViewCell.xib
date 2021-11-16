@@ -46,7 +46,7 @@
                         <color key="progressTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="trackTintColor" name="default_grey"/>
                     </progressView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhq-M4-SYs">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhq-M4-SYs">
                         <rect key="frame" x="24" y="228.5" width="41" height="19.5"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                         <color key="textColor" name="default_text"/>
@@ -55,6 +55,12 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZ7-En-zAW">
                         <rect key="frame" x="24" y="268" width="63" height="17"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                        <color key="textColor" name="default_text"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Heg-ns-vef">
+                        <rect key="frame" x="161" y="303" width="21" height="10"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="8"/>
                         <color key="textColor" name="default_text"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -79,10 +85,12 @@
                 <constraints>
                     <constraint firstItem="QYr-77-E4X" firstAttribute="top" secondItem="hNR-yW-uFv" secondAttribute="top" id="0ZK-xZ-sCe"/>
                     <constraint firstItem="isq-yg-HP1" firstAttribute="leading" secondItem="hNR-yW-uFv" secondAttribute="leading" id="6iZ-uE-Gu9"/>
+                    <constraint firstItem="isq-yg-HP1" firstAttribute="top" secondItem="Heg-ns-vef" secondAttribute="bottom" constant="1" id="BfQ-Ug-GG7"/>
                     <constraint firstItem="SZ7-En-zAW" firstAttribute="leading" secondItem="hNR-yW-uFv" secondAttribute="leading" constant="24" id="EyD-xI-M1N"/>
                     <constraint firstAttribute="trailing" secondItem="isq-yg-HP1" secondAttribute="trailing" id="GS3-f2-23r"/>
                     <constraint firstItem="Lhq-M4-SYs" firstAttribute="leading" secondItem="hNR-yW-uFv" secondAttribute="leading" constant="24" id="GvJ-IL-p8t"/>
                     <constraint firstItem="Hwe-b1-urK" firstAttribute="bottom" secondItem="6xu-6s-XPk" secondAttribute="bottom" constant="-30" id="Hvb-hw-rhz"/>
+                    <constraint firstAttribute="trailing" secondItem="Heg-ns-vef" secondAttribute="trailing" constant="4" id="K6U-Lw-PzK"/>
                     <constraint firstAttribute="bottom" secondItem="QYr-77-E4X" secondAttribute="bottom" id="KZI-QL-dV9"/>
                     <constraint firstAttribute="bottom" secondItem="6xu-6s-XPk" secondAttribute="bottom" id="Pxi-MS-fC7"/>
                     <constraint firstAttribute="bottom" secondItem="SZ7-En-zAW" secondAttribute="bottom" constant="30" id="QNL-kv-zWk"/>
@@ -104,6 +112,7 @@
                 <outlet property="notContentView" destination="QYr-77-E4X" id="QrH-lk-D39"/>
                 <outlet property="playerView" destination="6xu-6s-XPk" id="wKK-xL-0Q1"/>
                 <outlet property="progressBar" destination="isq-yg-HP1" id="w4U-Cs-YiN"/>
+                <outlet property="sourceLabel" destination="Heg-ns-vef" id="9GO-JJ-vzh"/>
                 <outlet property="tagsLabel" destination="SZ7-En-zAW" id="6bI-71-9sy"/>
                 <outlet property="userAvatarView" destination="Hwe-b1-urK" id="Jan-Fh-5lS"/>
                 <outlet property="usernameLabel" destination="Lhq-M4-SYs" id="uSh-4H-ROI"/>
