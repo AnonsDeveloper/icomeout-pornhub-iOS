@@ -25,6 +25,7 @@ iCome Out is an open source project of an unofficial Pornub app for iPhone and i
 ### New Reels section and enanched graphics!
 #### You can choose the reels source from the settings
 <img src="/Images/IMG_1234123.png" width="250">
+⬆️ available in tag 1.3
 
 ### PIN protection
 <img src="/Images/IMG_0690.PNG" width="250">
