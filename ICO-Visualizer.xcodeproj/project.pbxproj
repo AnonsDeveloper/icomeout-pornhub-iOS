@@ -59,6 +59,15 @@
 		AD2E2B4527374AE700471293 /* FakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2E2B4427374AE700471293 /* FakeViewController.swift */; };
 		AD2E2B4D2739379A00471293 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2E2B4C2739379A00471293 /* ImageCollectionViewCell.swift */; };
 		AD2E2B4F273937A200471293 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD2E2B4E273937A200471293 /* ImageCollectionViewCell.xib */; };
+		AD51F785273BEE2A0006DCEB /* FeedsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD51F784273BEE2A0006DCEB /* FeedsResponse.swift */; };
+		AD51F788273BF0630006DCEB /* ReelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD51F787273BF0630006DCEB /* ReelsViewController.swift */; };
+		AD51F78A273BF0750006DCEB /* ReelsViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD51F789273BF0750006DCEB /* ReelsViewCoordinator.swift */; };
+		AD51F78C273BF07F0006DCEB /* ReelsViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD51F78B273BF07F0006DCEB /* ReelsViewControllerDelegate.swift */; };
+		AD51F78F273BF23A0006DCEB /* ReelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD51F78E273BF23A0006DCEB /* ReelCollectionViewCell.swift */; };
+		AD51F791273BF25A0006DCEB /* ReelCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD51F790273BF25A0006DCEB /* ReelCollectionViewCell.xib */; };
+		AD51F7AA273C53E90006DCEB /* UIScreen+Extensions.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD51F7A9273C53E90006DCEB /* UIScreen+Extensions.swift.swift */; };
+		AD51F7AC273C71E90006DCEB /* IconTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD51F7AB273C71E90006DCEB /* IconTextView.swift */; };
+		AD581927273D478900CFBDC5 /* TikResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD581926273D478900CFBDC5 /* TikResponse.swift */; };
 		AD5BC84527329ACC004898BB /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5BC84427329ACC004898BB /* UICollectionView+Extensions.swift */; };
 		AD5BC84727329B0C004898BB /* FullWidthCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5BC84627329B0C004898BB /* FullWidthCollectionViewCell.swift */; };
 		AD5BC84A27329D11004898BB /* VideosResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5BC84927329D11004898BB /* VideosResponseModel.swift */; };
@@ -86,6 +95,7 @@
 		AD5BC87F2732E27F004898BB /* StarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5BC87E2732E27F004898BB /* StarCollectionViewCell.swift */; };
 		AD5BC8812732E288004898BB /* StarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD5BC8802732E288004898BB /* StarCollectionViewCell.xib */; };
 		AD5BC8842732EC4F004898BB /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5BC8832732EC4F004898BB /* WebViewController.swift */; };
+		AD656F49274289E9007AF361 /* ReelElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD656F48274289E9007AF361 /* ReelElement.swift */; };
 		AD70FA0F2733E536003D4843 /* StarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70FA0E2733E536003D4843 /* StarViewController.swift */; };
 		AD70FA112733E540003D4843 /* StarViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70FA102733E540003D4843 /* StarViewCoordinator.swift */; };
 		AD70FA132733E547003D4843 /* StarViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70FA122733E547003D4843 /* StarViewControllerDelegate.swift */; };
@@ -95,6 +105,9 @@
 		AD817116273ADFAC00F1E22F /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD817115273ADFAC00F1E22F /* Date+Extensions.swift */; };
 		AD817118273AE01C00F1E22F /* UITapGestureRecognizer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD817117273AE01C00F1E22F /* UITapGestureRecognizer+Extensions.swift */; };
 		AD81711A273AE05B00F1E22F /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD817119273AE05B00F1E22F /* UIViewController+Extensions.swift */; };
+		AD82BEAE27431C22003AB90A /* TikPornResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD82BEAD27431C22003AB90A /* TikPornResponse.swift */; };
+		AD82BEB127432696003AB90A /* ReelSourceSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD82BEB027432696003AB90A /* ReelSourceSelectionViewController.swift */; };
+		AD82BEB32743B6DB003AB90A /* ImagesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD82BEB22743B6DA003AB90A /* ImagesResponse.swift */; };
 		AD8B0D68251E24B000566B9B /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8B0D67251E24B000566B9B /* BaseNavigationController.swift */; };
 		ADD4DBA427329667005ECF79 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD4DBA127329667005ECF79 /* TabBarCoordinator.swift */; };
 		ADD4DBA527329667005ECF79 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD4DBA227329667005ECF79 /* TabBarViewController.swift */; };
@@ -161,6 +174,15 @@
 		AD2E2B4427374AE700471293 /* FakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeViewController.swift; sourceTree = "<group>"; };
 		AD2E2B4C2739379A00471293 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		AD2E2B4E273937A200471293 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		AD51F784273BEE2A0006DCEB /* FeedsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedsResponse.swift; path = "ICO-Visualizer/Models/FeedsResponse.swift"; sourceTree = SOURCE_ROOT; };
+		AD51F787273BF0630006DCEB /* ReelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReelsViewController.swift; path = "ICO-Visualizer/Controllers/ReelsView/ReelsViewController.swift"; sourceTree = SOURCE_ROOT; };
+		AD51F789273BF0750006DCEB /* ReelsViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReelsViewCoordinator.swift; path = "ICO-Visualizer/Controllers/ReelsView/ReelsViewCoordinator.swift"; sourceTree = SOURCE_ROOT; };
+		AD51F78B273BF07F0006DCEB /* ReelsViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReelsViewControllerDelegate.swift; path = "ICO-Visualizer/Controllers/ReelsView/ReelsViewControllerDelegate.swift"; sourceTree = SOURCE_ROOT; };
+		AD51F78E273BF23A0006DCEB /* ReelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReelCollectionViewCell.swift; path = "ICO-Visualizer/Controllers/Cells/ReelCell/ReelCollectionViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		AD51F790273BF25A0006DCEB /* ReelCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ReelCollectionViewCell.xib; path = "ICO-Visualizer/Controllers/Cells/ReelCell/ReelCollectionViewCell.xib"; sourceTree = SOURCE_ROOT; };
+		AD51F7A9273C53E90006DCEB /* UIScreen+Extensions.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIScreen+Extensions.swift.swift"; path = "ICO-Visualizer/Extensions/UIScreen+Extensions.swift.swift"; sourceTree = SOURCE_ROOT; };
+		AD51F7AB273C71E90006DCEB /* IconTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IconTextView.swift; path = "ICO-Visualizer/Extensions/IconTextView.swift"; sourceTree = SOURCE_ROOT; };
+		AD581926273D478900CFBDC5 /* TikResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TikResponse.swift; path = "ICO-Visualizer/Models/TikResponse.swift"; sourceTree = SOURCE_ROOT; };
 		AD5BC84427329ACC004898BB /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		AD5BC84627329B0C004898BB /* FullWidthCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullWidthCollectionViewCell.swift; sourceTree = "<group>"; };
 		AD5BC84927329D11004898BB /* VideosResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosResponseModel.swift; sourceTree = "<group>"; };
@@ -188,6 +210,7 @@
 		AD5BC87E2732E27F004898BB /* StarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarCollectionViewCell.swift; sourceTree = "<group>"; };
 		AD5BC8802732E288004898BB /* StarCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StarCollectionViewCell.xib; sourceTree = "<group>"; };
 		AD5BC8832732EC4F004898BB /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		AD656F48274289E9007AF361 /* ReelElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReelElement.swift; path = "ICO-Visualizer/Models/ReelElement.swift"; sourceTree = SOURCE_ROOT; };
 		AD70FA0E2733E536003D4843 /* StarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarViewController.swift; sourceTree = "<group>"; };
 		AD70FA102733E540003D4843 /* StarViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarViewCoordinator.swift; sourceTree = "<group>"; };
 		AD70FA122733E547003D4843 /* StarViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarViewControllerDelegate.swift; sourceTree = "<group>"; };
@@ -197,6 +220,9 @@
 		AD817115273ADFAC00F1E22F /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Date+Extensions.swift"; path = "ICO-Visualizer/Extensions/Date+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		AD817117273AE01C00F1E22F /* UITapGestureRecognizer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UITapGestureRecognizer+Extensions.swift"; path = "ICO-Visualizer/Extensions/UITapGestureRecognizer+Extensions.swift"; sourceTree = SOURCE_ROOT; };
 		AD817119273AE05B00F1E22F /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIViewController+Extensions.swift"; path = "ICO-Visualizer/Extensions/UIViewController+Extensions.swift"; sourceTree = SOURCE_ROOT; };
+		AD82BEAD27431C22003AB90A /* TikPornResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TikPornResponse.swift; path = "ICO-Visualizer/Models/TikPornResponse.swift"; sourceTree = SOURCE_ROOT; };
+		AD82BEB027432696003AB90A /* ReelSourceSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReelSourceSelectionViewController.swift; path = "ICO-Visualizer/Controllers/ReelSourceSelection/ReelSourceSelectionViewController.swift"; sourceTree = SOURCE_ROOT; };
+		AD82BEB22743B6DA003AB90A /* ImagesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImagesResponse.swift; path = "ICO-Visualizer/Models/ImagesResponse.swift"; sourceTree = SOURCE_ROOT; };
 		AD8B0D67251E24B000566B9B /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		ADD4DBA127329667005ECF79 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		ADD4DBA227329667005ECF79 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -376,6 +402,25 @@
 			path = ImageCell;
 			sourceTree = "<group>";
 		};
+		AD51F786273BF0560006DCEB /* ReelsView */ = {
+			isa = PBXGroup;
+			children = (
+				AD51F787273BF0630006DCEB /* ReelsViewController.swift */,
+				AD51F789273BF0750006DCEB /* ReelsViewCoordinator.swift */,
+				AD51F78B273BF07F0006DCEB /* ReelsViewControllerDelegate.swift */,
+			);
+			path = ReelsView;
+			sourceTree = "<group>";
+		};
+		AD51F78D273BF2300006DCEB /* ReelCell */ = {
+			isa = PBXGroup;
+			children = (
+				AD51F78E273BF23A0006DCEB /* ReelCollectionViewCell.swift */,
+				AD51F790273BF25A0006DCEB /* ReelCollectionViewCell.xib */,
+			);
+			path = ReelCell;
+			sourceTree = "<group>";
+		};
 		AD5BC84827329B60004898BB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +436,8 @@
 				AD817115273ADFAC00F1E22F /* Date+Extensions.swift */,
 				AD817117273AE01C00F1E22F /* UITapGestureRecognizer+Extensions.swift */,
 				AD817119273AE05B00F1E22F /* UIViewController+Extensions.swift */,
+				AD51F7A9273C53E90006DCEB /* UIScreen+Extensions.swift.swift */,
+				AD51F7AB273C71E90006DCEB /* IconTextView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -408,6 +455,7 @@
 		AD5BC8562732A33B004898BB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				AD51F78D273BF2300006DCEB /* ReelCell */,
 				AD2E2B4B2739364300471293 /* ImageCell */,
 				AD13B9C4273573C0006676C2 /* StarCarouselCell */,
 				AD13B93127354361006676C2 /* ToggleCell */,
@@ -502,6 +550,14 @@
 			path = StarView;
 			sourceTree = "<group>";
 		};
+		AD82BEAF27432678003AB90A /* ReelSourceSelection */ = {
+			isa = PBXGroup;
+			children = (
+				AD82BEB027432696003AB90A /* ReelSourceSelectionViewController.swift */,
+			);
+			path = ReelSourceSelection;
+			sourceTree = "<group>";
+		};
 		ADD4DBA027329667005ECF79 /* TabBarView */ = {
 			isa = PBXGroup;
 			children = (
@@ -515,6 +571,8 @@
 		ADD4DBA72732966D005ECF79 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AD82BEAF27432678003AB90A /* ReelSourceSelection */,
+				AD51F786273BF0560006DCEB /* ReelsView */,
 				AD2E2B4327374AD600471293 /* FakeView */,
 				AD2E2B3E2737491900471293 /* LeftImageCaption */,
 				AD2E2B3B27373F8400471293 /* PinSetupView */,
@@ -587,6 +645,11 @@
 				AD5BC8542732A27E004898BB /* ErrorResponse.swift */,
 				AD5BC8682732D368004898BB /* CategoriesModel.swift */,
 				AD5BC8742732E0FF004898BB /* StarsModel.swift */,
+				AD51F784273BEE2A0006DCEB /* FeedsResponse.swift */,
+				AD581926273D478900CFBDC5 /* TikResponse.swift */,
+				AD656F48274289E9007AF361 /* ReelElement.swift */,
+				AD82BEAD27431C22003AB90A /* TikPornResponse.swift */,
+				AD82BEB22743B6DA003AB90A /* ImagesResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -670,6 +733,7 @@
 				AD13B9BD27354D5E006676C2 /* AppIconDuet@2x.png in Resources */,
 				AD13B9BC27354D5E006676C2 /* AppIconDevelopPremium.png in Resources */,
 				AD13B9A627354D5E006676C2 /* AppIconBase2.png in Resources */,
+				AD51F791273BF25A0006DCEB /* ReelCollectionViewCell.xib in Resources */,
 				AD13B9B627354D5E006676C2 /* AppIconDuet@3x.png in Resources */,
 				AD13B9C8273573E6006676C2 /* StarsCarouselCollectionViewCell.xib in Resources */,
 				AD13B9B527354D5E006676C2 /* DarkIcon@3x.png in Resources */,
@@ -752,20 +816,28 @@
 				AD5BC86C2732D48B004898BB /* TitleCollectionViewCell.swift in Sources */,
 				AD5BC8782732E1A5004898BB /* StarsViewController.swift in Sources */,
 				AD817112273ADF4600F1E22F /* Notification+Extensions.swift in Sources */,
+				AD581927273D478900CFBDC5 /* TikResponse.swift in Sources */,
+				AD82BEAE27431C22003AB90A /* TikPornResponse.swift in Sources */,
 				AD2E2B402737491900471293 /* LeftImageCaptionTableViewCell.swift in Sources */,
 				ADD4DBA627329667005ECF79 /* TabBarViewControllerDelegate.swift in Sources */,
 				AD13B92727352B6D006676C2 /* BannerCollectionViewCell.swift in Sources */,
 				ADF1C4D2251CF97600FC0242 /* AppDelegate.swift in Sources */,
 				AD13B9C6273573D9006676C2 /* StarsCarouselCollectionViewCell.swift in Sources */,
 				AD5BC8752732E0FF004898BB /* StarsModel.swift in Sources */,
+				AD656F49274289E9007AF361 /* ReelElement.swift in Sources */,
 				ADF1C4D4251CF97600FC0242 /* SceneDelegate.swift in Sources */,
 				AD5BC8712732D6ED004898BB /* TitleSectionHeaderReusableView.swift in Sources */,
+				AD51F78F273BF23A0006DCEB /* ReelCollectionViewCell.swift in Sources */,
 				AD5BC87C2732E1B7004898BB /* StarsViewControllerDelegate.swift in Sources */,
+				AD51F7AC273C71E90006DCEB /* IconTextView.swift in Sources */,
 				AD5BC84A27329D11004898BB /* VideosResponseModel.swift in Sources */,
+				AD51F78C273BF07F0006DCEB /* ReelsViewControllerDelegate.swift in Sources */,
 				AD13B93527354362006676C2 /* ToggleCollectionViewCell.swift in Sources */,
 				AD2E2B4527374AE700471293 /* FakeViewController.swift in Sources */,
+				AD51F78A273BF0750006DCEB /* ReelsViewCoordinator.swift in Sources */,
 				AD81711A273AE05B00F1E22F /* UIViewController+Extensions.swift in Sources */,
 				AD13B9C027354E06006676C2 /* IconSelectionViewController.swift in Sources */,
+				AD51F7AA273C53E90006DCEB /* UIScreen+Extensions.swift.swift in Sources */,
 				AD70FA132733E547003D4843 /* StarViewControllerDelegate.swift in Sources */,
 				AD817118273AE01C00F1E22F /* UITapGestureRecognizer+Extensions.swift in Sources */,
 				AD5BC84F27329E96004898BB /* HomeViewController.swift in Sources */,
@@ -774,6 +846,7 @@
 				AD5BC8592732A355004898BB /* VideoCollectionViewCell.swift in Sources */,
 				AD817116273ADFAC00F1E22F /* Date+Extensions.swift in Sources */,
 				AD2E2B3D27373F9200471293 /* PinSetupViewController.swift in Sources */,
+				AD82BEB127432696003AB90A /* ReelSourceSelectionViewController.swift in Sources */,
 				AD5BC85327329EBD004898BB /* BaseViewController.swift in Sources */,
 				AD2E2B4227374A1A00471293 /* PokemonList.swift in Sources */,
 				AD5BC8732732DBD8004898BB /* ColorLayout.swift in Sources */,
@@ -793,8 +866,11 @@
 				AD817114273ADF8800F1E22F /* Double+Extensions.swift in Sources */,
 				AD5BC84C27329E15004898BB /* APIServiceError.swift in Sources */,
 				AD5BC8672732B839004898BB /* CategoriesViewDelegate.swift in Sources */,
+				AD51F788273BF0630006DCEB /* ReelsViewController.swift in Sources */,
+				AD82BEB32743B6DB003AB90A /* ImagesResponse.swift in Sources */,
 				AD5BC85127329E9E004898BB /* HomeViewCoordinator.swift in Sources */,
 				AD5BC84527329ACC004898BB /* UICollectionView+Extensions.swift in Sources */,
+				AD51F785273BEE2A0006DCEB /* FeedsResponse.swift in Sources */,
 				AD5BC8842732EC4F004898BB /* WebViewController.swift in Sources */,
 				AD5BC87F2732E27F004898BB /* StarCollectionViewCell.swift in Sources */,
 				AD5BC8552732A27E004898BB /* ErrorResponse.swift in Sources */,
@@ -946,7 +1022,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7FTQJ32GRV;
 				INFOPLIST_FILE = "ICO-visualizer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -966,7 +1042,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 7FTQJ32GRV;
 				INFOPLIST_FILE = "ICO-visualizer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (

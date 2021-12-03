@@ -21,7 +21,7 @@ class WebViewController: UIViewController {
         let button = UIButton()
         button.setTitle("", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
+        button.setImage(UIImage(named: "back_icon"), for: .normal)
         button.tintColor = ColorLayout.default_orange
         return button
     }()
@@ -67,6 +67,7 @@ class WebViewController: UIViewController {
     }
     
     @objc func onCloseTap(_ button: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        //self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
 }

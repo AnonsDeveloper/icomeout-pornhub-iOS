@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension String {
     func capitalizingFirstLetter() -> String {
@@ -21,7 +22,6 @@ extension String {
         let dateFormatterPrint = DateFormatter()
         dateFormatterPrint.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return dateFormatterPrint.date(from: self)
-        //2021-11-05 22:50:07
     }
     
     func capturedGroups(withRegex pattern: String) -> [String] {
@@ -36,7 +36,6 @@ extension String {
 
          let matches = regex.matches(in: self, options: [], range: NSRange(location:0, length: self.count))
 
-         //guard let match = matches.first else { return results }
         for item in matches {
             let lastRangeIndex = item.numberOfRanges - 1
             guard lastRangeIndex >= 1 else { return results }
@@ -58,5 +57,27 @@ extension String {
     func getQueryStringParameter(param: String) -> String? {
         guard let url = URLComponents(string: self) else { return nil }
         return url.queryItems?.first(where: { $0.name == param })?.value
+    }
+    
+    func hexStringToUIColor () -> UIColor {
+        var cString:String = self.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+
+        if (cString.hasPrefix("#")) {
+            cString.remove(at: cString.startIndex)
+        }
+
+        if ((cString.count) != 6) {
+            return UIColor.gray
+        }
+
+        var rgbValue:UInt64 = 0
+        Scanner(string: cString).scanHexInt64(&rgbValue)
+
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
     }
 }

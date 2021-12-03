@@ -1,6 +1,6 @@
 //
 //  ToggleCollectionViewCell.swift
-//  Crypto Bot
+//  ICO-visualizer
 //
 //  Created by Anonymous on 12/10/21.
 //

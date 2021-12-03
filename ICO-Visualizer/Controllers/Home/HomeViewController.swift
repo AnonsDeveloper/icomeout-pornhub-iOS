@@ -76,7 +76,6 @@ class HomeViewController: BaseViewController {
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 15, right: 0)
             flowLayout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 85)
-            //flowLayout.sectionHeadersPinToVisibleBounds = true
             flowLayout.estimatedItemSize = CGSize(
                 width: UIScreen.main.bounds.width - 2,
                 height: 200
@@ -103,7 +102,6 @@ class HomeViewController: BaseViewController {
         self.loadingData = true
         collectionView.bottomRefreshControl?.beginRefreshing()
         coordinator.loadData()
-        //self.setupToHideKeyboardOnTapOnView()
         collectionView.keyboardDismissMode = .onDrag
         
         let refreshControl = UIRefreshControl()
@@ -116,7 +114,6 @@ class HomeViewController: BaseViewController {
                                        width: refreshControl.bounds.size.width,
                                        height: refreshControl.bounds.size.height)
         self.collectionView.refreshControl?.beginRefreshing()
-        
     }
     
     @objc func onEnterPin(_ notification: Notification)
@@ -250,7 +247,6 @@ extension HomeViewController: HomeViewDelegate {
             self.collectionView.bottomRefreshControl?.endRefreshing()
             self.collectionView.refreshControl?.endRefreshing()
             self.collectionView.reloadData()
-            //self.loadingData = false
             self.errorTextLabel.isHidden = false
             self.errorTextLabel.text = message
         }

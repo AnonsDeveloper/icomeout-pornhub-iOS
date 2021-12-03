@@ -49,7 +49,7 @@ extension SettingsViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -70,6 +70,14 @@ extension SettingsViewController: UICollectionViewDelegate, UICollectionViewData
             iconSelectionCell.setup(title: "Setup a fake PIN") {
                 let pinVc = PinSetupViewController()
                 pinVc.pinType = .fakePin
+                self.navigationController?.pushViewController(pinVc, animated: true)
+            }
+            return iconSelectionCell
+        }
+        if indexPath.row == 3{
+            let iconSelectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: NavigationButtonCollectionViewCell.className, for: indexPath) as! NavigationButtonCollectionViewCell
+            iconSelectionCell.setup(title: "Select Reels source") {
+                let pinVc = ReelSourceSelectionViewController()
                 self.navigationController?.pushViewController(pinVc, animated: true)
             }
             return iconSelectionCell

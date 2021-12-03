@@ -7,15 +7,41 @@
 //
 
 import UIKit
+import AVFoundation
+import AlamofireNetworkActivityLogger
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    private var audioLevel : Float = 0.0
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback)
+            try AVAudioSession.sharedInstance().setActive(true, options: [])
+            AVAudioSession.sharedInstance().addObserver(self, forKeyPath: "outputVolume", options: NSKeyValueObservingOptions.new, context: nil)
+            audioLevel = AVAudioSession.sharedInstance().outputVolume
+        } catch {
+            print(error)
+        }
+        #if DEBUG
+            NetworkActivityLogger.shared.level = .debug
+            NetworkActivityLogger.shared.startLogging()
+        #endif
         return true
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "outputVolume"{
+            let audioSession = AVAudioSession.sharedInstance()
+            if audioSession.outputVolume > audioLevel {
+                NotificationCenter.default.post(Notification(name: .didPressVolumeUp, object: nil, userInfo: ["volume" : audioSession.outputVolume]))
+            }
+            if audioSession.outputVolume < audioLevel {
+                NotificationCenter.default.post(Notification(name: .didPressVolumeDown, object: nil, userInfo: ["volume" : audioSession.outputVolume]))
+            }
+            audioLevel = audioSession.outputVolume
+        }
     }
 
     // MARK: UISceneSession Lifecycle
@@ -31,7 +57,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
 }
 

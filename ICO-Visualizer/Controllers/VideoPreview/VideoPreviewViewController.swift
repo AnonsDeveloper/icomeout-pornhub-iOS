@@ -16,7 +16,6 @@ class VideoPreviewViewController: UIViewController {
         vc1.video = video
         vc1.delegate = delegate
         if UIDevice.current.userInterfaceIdiom == .pad {
-            //vc1.modalPresentationStyle = .popover
             fromView.present(vc1, animated: true, completion: nil)
         }
         else{
@@ -183,8 +182,7 @@ class VideoPreviewViewController: UIViewController {
         self.view.addSubview(starsLabel)
         starsLabel.topAnchor.constraint(equalTo: self.viewsLabel.bottomAnchor, constant: 12).isActive = true
         starsLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 12).isActive = true
-       // starsLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -12).isActive = true
-        
+
         self.view.addSubview(categoriesLabel)
         categoriesLabel.topAnchor.constraint(equalTo: self.starsLabel.bottomAnchor, constant: 12).isActive = true
         categoriesLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 12).isActive = true
@@ -223,7 +221,6 @@ class VideoPreviewViewController: UIViewController {
             let html = """
                         <iframe src="https://www.pornhub.com/embed/\(videoId)" frameborder="0" width="100%" height="100%" scrolling="no" allowfullscreen></iframe>
                         """
-          //  videoPlayer.isHidden = false
             videoPlayer.loadHTMLString(html, baseURL: nil)
         }
 
@@ -234,7 +231,6 @@ class VideoPreviewViewController: UIViewController {
         if let stars = self.video.pornstars?.map({ $0.pornstarName! }), stars.count > 0 {
             var text = ""
             text += stars.joined(separator: ", ")
-            //let attrString = NSMutableAttributedString(string: text)
             self.starsLabel.attributedText = NSAttributedString(string: text)
             self.starsLabel.isUserInteractionEnabled = true
             self.starsLabel.addGestureRecognizer(UITapGestureRecognizer(target:self, action: #selector(tapLabel(gesture:))))

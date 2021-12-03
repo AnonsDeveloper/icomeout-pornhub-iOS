@@ -44,9 +44,7 @@ class StarsViewCoordinator {
                 case .success(let stars):
                     if let stars = stars.stars {
                         for item in stars {
-                            if item.star?.gender == "female" && Int(item.star?.videosCountAll ?? "0") ?? 0 > 0 {
-                                self.stars.append(item)
-                            }
+                            self.stars.append(item)
                         }
                     }
                     let orderedStars = self.stars.sorted(by: { Int($0.star?.videosCountAll ?? "0") ?? 0 > Int($1.star?.videosCountAll ?? "0") ?? 0 })

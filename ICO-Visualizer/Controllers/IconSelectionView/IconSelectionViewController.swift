@@ -59,14 +59,12 @@ extension IconSelectionViewController: UICollectionViewDelegate, UICollectionVie
         if indexPath.row == 0 {
             selectIconCell.setup(title: "Default Icon") {
                 UIApplication.shared.setAlternateIconName(nil) { (error) in }
-               // UIApplication.shared.setAlternateIconName("AppIcon-2")
                 self.navigationController?.popViewController(animated: true)
             }
         }
         else{
             selectIconCell.setup(title: self.icons[indexPath.row - 1]) {
                 UIApplication.shared.setAlternateIconName(self.icons[indexPath.row - 1]) { (error) in }
-               // UIApplication.shared.setAlternateIconName("AppIcon-2")
                 self.navigationController?.popViewController(animated: true)
             }
         }

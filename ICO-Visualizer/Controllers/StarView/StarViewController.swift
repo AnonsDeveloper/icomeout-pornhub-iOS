@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import DTPhotoViewerController
+import ImageViewer_swift
 
 
 class StarViewController: BaseViewController {
@@ -91,19 +91,19 @@ class StarViewController: BaseViewController {
         let button = UIButton()
         button.setTitle("", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
+        button.setImage(UIImage(named: "back_icon"), for: .normal)
         button.tintColor = ColorLayout.default_orange
         return button
     }()
     
     private var loadingData: Bool = false
+    private var loadingImagesData: Bool = false
     private var stareImageLoaded: UIImage?
     private var contentType: ContentType = .videos
     private var lastVideoError: String?
     private var lastImagesError: String?
     
     override func viewDidLoad() {
-        //super.viewDidLoad()
         coordinator = StarViewCoordinator(self)
         self.setupView()
         
@@ -113,25 +113,19 @@ class StarViewController: BaseViewController {
                     self.starImage.setShadowAndCorner(cornerRadius: self.starImage.frame.width / 2)
                     self.starImage.isUserInteractionEnabled = true
                     self.stareImageLoaded = image
-                    let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-                    self.starImage.addGestureRecognizer(tap)
-                    
+                    self.starImage.setupImageViewer(options: [.theme(.dark), .closeIcon(UIImage(named: "close_icon")!)])
                 }
                 
             })
             self.starNameLabel.text = self.coordinator.star.starName
         }
         self.loadingData = true
+        self.loadingImagesData = true
         collectionView.bottomRefreshControl?.beginRefreshing()
+        photosCollectionView.bottomRefreshControl?.beginRefreshing()
         self.refreshBookmarkAspect()
-        self.coordinator.load()
-    }
-    
-    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
-        if let image = self.stareImageLoaded {
-            let viewController = DTPhotoViewerController(referencedView: self.starImage, image: image)
-            self.present(viewController, animated: true, completion: nil)
-        }
+        self.coordinator.loadImages()
+        self.coordinator.loadVideos()
     }
     
     func setupView(){
@@ -212,12 +206,17 @@ class StarViewController: BaseViewController {
         bottomRefreshController.tintColor = .white
         collectionView.bottomRefreshControl = bottomRefreshController
         collectionView.bottomRefreshControl?.beginRefreshing()
+        
+        let imagesBottomRefresh = UIRefreshControl()
+        imagesBottomRefresh.tintColor = .white
+        photosCollectionView.bottomRefreshControl = imagesBottomRefresh
+        photosCollectionView.bottomRefreshControl?.beginRefreshing()
+        
         collectionView.backgroundColor = .clear
         self.view.addSubview(self.errorTextLabel)
         errorTextLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
         errorTextLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
         errorTextLabel.centerYAnchor.constraint(equalTo: self.collectionView.centerYAnchor).isActive = true
-        //self.setupToHideKeyboardOnTapOnView()
         NotificationCenter.default.addObserver(self, selector: #selector(onDidUpdateBookmarks(_:)), name: .didUpdateBookmarks, object: nil)
         self.refreshCollection()
     }
@@ -226,7 +225,7 @@ class StarViewController: BaseViewController {
         self.collectionView.isHidden = !(self.contentType == ContentType.videos)
         self.photosCollectionView.isHidden = !(self.contentType == ContentType.images)
         if self.photosCollectionView.isHidden == false  {
-            if let imageError = self.lastImagesError {
+            if let imageError = self.lastImagesError, self.coordinator.images.count == 0 {
                 self.errorTextLabel.isHidden = false
                 self.errorTextLabel.text = imageError
             }
@@ -236,7 +235,7 @@ class StarViewController: BaseViewController {
         }
        
         if self.collectionView.isHidden == false {
-            if let videoError = self.lastVideoError {
+            if let videoError = self.lastVideoError{
                 self.errorTextLabel.isHidden = false
                 self.errorTextLabel.text = videoError
             }
@@ -252,7 +251,7 @@ class StarViewController: BaseViewController {
             let vc = WebViewController()
             vc.url = starUrl
             vc.titleText = "\(self.coordinator.star.starName ?? "") Web Page"
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.present(vc, animated: true)
         }
     }
     
@@ -300,7 +299,6 @@ extension StarViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return CGSize(
                 width: size,
                 height: size
-                //height: UICollectionViewFlowLayout.automaticSize.height
             )
         }
         return CGSize(
@@ -353,6 +351,7 @@ extension StarViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if collectionView == self.photosCollectionView {
             let imageCell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.className, for: indexPath) as! ImageCollectionViewCell
             imageCell.setup(imageUrl: self.coordinator.images[indexPath.row - 1])
+            imageCell.imageView.setupImageViewer(urls: self.coordinator.images.map({ URL(string: $0)! }), initialIndex: indexPath.row - 1, options: [.theme(.dark), .closeIcon(UIImage(named: "close_icon")!)])
             return imageCell
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCollectionViewCell.className, for: indexPath) as! VideoCollectionViewCell
@@ -365,14 +364,19 @@ extension StarViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if collectionView == self.photosCollectionView {
-            return
+            let lastElement = self.coordinator.images.count - 1
+            if !loadingImagesData && indexPath.row == lastElement {
+                photosCollectionView.bottomRefreshControl?.beginRefreshing()
+                loadingImagesData = true
+                self.coordinator.fetchNextImages()
+            }
         }
-        if let videos = self.coordinator.star.starVideos {
+        else if let videos = self.coordinator.star.starVideos {
             let lastElement = videos.count - 1
             if !loadingData && indexPath.row == lastElement && !videosCompleted {
                 collectionView.bottomRefreshControl?.beginRefreshing()
                 loadingData = true
-                self.coordinator.fetchNext()
+                self.coordinator.fetchNextVideos()
             }
         }
     }
@@ -381,16 +385,8 @@ extension StarViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if indexPath.row == 0 {
             return
         }
-        if collectionView == self.photosCollectionView {
-            if let cell = (collectionView.cellForItem(at: indexPath) as? ImageCollectionViewCell), let image = cell.imageView.image {
-                let viewController = DTPhotoViewerController(referencedView: cell.imageView, image: image)
-                self.present(viewController, animated: true, completion: nil)
-            }
-        }
-        else{
-            if let video = self.coordinator.star.starVideos?[indexPath.row - 1]{
-                VideoPreviewViewController.present(fromView: self, video: video, delegate: self.tabDelegate)
-            }
+        if collectionView == self.collectionView, let video = self.coordinator.star.starVideos?[indexPath.row - 1]{
+            VideoPreviewViewController.present(fromView: self, video: video, delegate: self.tabDelegate)
         }
 
     }
@@ -435,9 +431,11 @@ extension StarViewController: StarViewControllerDelegate{
     
     func reloadImages(_ message: String?){
         DispatchQueue.main.async {
+            self.loadingImagesData = false
             self.photosCollectionView.reloadData()
             self.lastImagesError = message
-            if let message = message, self.contentType == .images {
+            self.photosCollectionView.bottomRefreshControl?.endRefreshing()
+            if let message = message, self.contentType == .images && self.coordinator.images.count == 0 {
                 self.errorTextLabel.isHidden = false
                 self.errorTextLabel.text = message
             }

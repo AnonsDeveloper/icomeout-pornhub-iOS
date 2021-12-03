@@ -12,4 +12,7 @@ extension Notification.Name {
     static let didUpdateBookmarks = Notification.Name("didUpdateBookmarks")
     static let didEnterCorrectPin = Notification.Name("didEnterCorrectPin")
     static let didEnterFakePin = Notification.Name("didEnterFakePin")
+    static let didPressVolumeUp = Notification.Name("didPressVolumeUp")
+    static let didPressVolumeDown = Notification.Name("didPressVolumeDown")
+    static let didChangeReelPreference = Notification.Name("didChangeReelPreference")
 }

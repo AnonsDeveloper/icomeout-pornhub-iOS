@@ -1,6 +1,6 @@
 //
 //  TabBarViewController.swift
-//  Crypto Bot
+//  ICO-visualizer
 //
 //  Created by Anonymous on 21/09/21.
 //
@@ -11,13 +11,17 @@ class TabBarViewController: UIViewController {
     
     @IBOutlet var tabItems: Array<UIButton>?
 
-
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var headerHeightConstraing: NSLayoutConstraint!
+    private let defaultHeaderHeight: CGFloat = 70
+    
+    
     @IBOutlet weak var settingsButton: UIButton!
     
     @IBOutlet weak var headerLogoImageView: UIImageView!
     private var mainNavigationController: BaseNavigationController!
 
-    lazy var controllers = [HomeViewController(), BookmarksViewController(), StarsViewController()]
+    lazy var controllers = [HomeViewController(), BookmarksViewController(), StarsViewController(), ReelsViewController()]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,11 +43,12 @@ class TabBarViewController: UIViewController {
             self.mainNavigationController = vc
             self.mainNavigationController.setNavigationBarHidden(true, animated: false)
             self.setViewController(index: 0)
-            
         }
     }
     
     private func setViewController(index: Int){
+        self.headerHeightConstraing.constant = index == 3 ? 0 : self.defaultHeaderHeight + UIScreen.main.topSafeAreaHeight
+        self.headerView.isHidden = index == 3
         let vc = controllers[index]
         vc.tabDelegate = self
         self.mainNavigationController.setViewControllers([vc], animated: false)
@@ -54,6 +59,7 @@ class TabBarViewController: UIViewController {
         }
         self.tabItems![index].tintColor = ColorLayout.default_orange
         settingsButton.setTitle("", for: .normal)
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             vc.viewDidSet()
         }
@@ -70,6 +76,18 @@ class TabBarViewController: UIViewController {
         let vc = SettingsViewController()
         self.mainNavigationController.pushViewController(vc, animated: true)
     }
+    
+    func pauseReelsIfNeeded(){
+        if let vc = mainNavigationController.topViewController as? ReelsViewController {
+            vc.pauseVideoIfNeeded()
+        }
+    }
+    
+    func playReelsIfNeeded(){
+        if let vc = mainNavigationController.topViewController as? ReelsViewController {
+            vc.playVideoIfNeeded()
+        }
+    }
 }
 
 extension TabBarViewController: TabBarViewControllerDelegate {
@@ -81,7 +99,6 @@ extension TabBarViewController: TabBarViewControllerDelegate {
         if let vc = self.controllers[0] as? HomeViewController {
             vc.searchForCategory(category: category)
         }
-       // self.setViewController(index: 0)
     }
     
     func setHeader() {
