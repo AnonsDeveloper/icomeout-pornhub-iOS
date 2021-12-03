@@ -13,4 +13,5 @@ protocol ReelsViewControllerDelegate {
     func reloadCollection()
     func openUrl(url: URL)
     func switchSound()
+    func openWebView(title: String, url: String)
 }

@@ -91,7 +91,7 @@ class StarViewController: BaseViewController {
         let button = UIButton()
         button.setTitle("", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
+        button.setImage(UIImage(named: "back_icon"), for: .normal)
         button.tintColor = ColorLayout.default_orange
         return button
     }()
@@ -251,7 +251,7 @@ class StarViewController: BaseViewController {
             let vc = WebViewController()
             vc.url = starUrl
             vc.titleText = "\(self.coordinator.star.starName ?? "") Web Page"
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.present(vc, animated: true)
         }
     }
     

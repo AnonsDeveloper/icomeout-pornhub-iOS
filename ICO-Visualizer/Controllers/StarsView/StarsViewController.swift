@@ -181,7 +181,7 @@ extension StarsViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if let star = self.coordinator.stars[indexPath.row].star, let starName = star.starName {
+        if let star = self.coordinator.stars[indexPath.row].star, let _ = star.starName {
             let vc = StarViewController()
             vc.star = star
             vc.tabDelegate = self.tabDelegate

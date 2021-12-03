@@ -12,4 +12,5 @@ target 'ICO-visualizer' do
   pod 'ImageViewer.swift/Fetcher', '~> 3.0'
   pod 'CCBottomRefreshControl'
   pod 'SVPinView', '~> 1.0'
+  pod 'AlamofireNetworkActivityLogger'
 end

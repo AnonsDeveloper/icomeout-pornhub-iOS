@@ -297,7 +297,7 @@ class APIService {
     func fetchTikPornFeeds(count: Int = 3, completionHandler: ((Result<[TikPornPost], Error>) -> Void)?){
         let dispach = DispatchGroup()
         var videos: [TikPornPost] = []
-        for n in 0...count {
+        for _ in 0...count {
             dispach.enter()
             AF.request(self.tikPornUrl, method: .post).responseJSON { result in
                 if let data = result.data{

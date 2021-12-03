@@ -22,6 +22,7 @@ class IconTextView: UIView {
     
     let textLabel: UILabel = {
         let view = UILabel()
+        view.textColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         view.font = UIFont(name: "HelveticaNeue-Semibold", size: 14.0)
         view.textAlignment = .center

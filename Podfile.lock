@@ -1,16 +1,19 @@
 PODS:
-  - Alamofire (5.2.1)
+  - Alamofire (5.4.4)
+  - AlamofireNetworkActivityLogger (3.4.0):
+    - Alamofire (~> 5.4.0)
   - CCBottomRefreshControl (0.5.2)
   - ImageViewer.swift (3.3.3)
   - ImageViewer.swift/Fetcher (3.3.3):
     - SDWebImage
-  - SDWebImage (5.8.0):
-    - SDWebImage/Core (= 5.8.0)
-  - SDWebImage/Core (5.8.0)
+  - SDWebImage (5.12.1):
+    - SDWebImage/Core (= 5.12.1)
+  - SDWebImage/Core (5.12.1)
   - SVPinView (1.0.11)
 
 DEPENDENCIES:
   - Alamofire
+  - AlamofireNetworkActivityLogger
   - CCBottomRefreshControl
   - ImageViewer.swift (~> 3.0)
   - ImageViewer.swift/Fetcher (~> 3.0)
@@ -20,18 +23,20 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AlamofireNetworkActivityLogger
     - CCBottomRefreshControl
     - ImageViewer.swift
     - SDWebImage
     - SVPinView
 
 SPEC CHECKSUMS:
-  Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
+  Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
+  AlamofireNetworkActivityLogger: 162ab8aee00e6267a4304d7cc134e13ccfe3bcc5
   CCBottomRefreshControl: 389780b4488321c91d18f66a6da5ef9606df6de5
   ImageViewer.swift: 3dbb74a68ac4bdd6cdd585b3128dae17ccd733e5
-  SDWebImage: 84000f962cbfa70c07f19d2234cbfcf5d779b5dc
+  SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
   SVPinView: 9b538d0ba68cdb092afe4f0f67ec84cbed079466
 
-PODFILE CHECKSUM: cfb7a224371ae02593563e3525145a1a7767493a
+PODFILE CHECKSUM: ad785374689f0733789fc91f5c288c453adec453
 
 COCOAPODS: 1.11.2

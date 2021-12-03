@@ -144,6 +144,9 @@ extension ReelsViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.row < 0 {
+            return collectionView.dequeueReusableCell(withReuseIdentifier: TitleCollectionViewCell.className, for: indexPath)
+        }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReelCollectionViewCell.className, for: indexPath) as! ReelCollectionViewCell
         cell.setup(element: self.coordinator.videos[indexPath.row], index: indexPath.row, playOnStart: indexPath.row == 0, isAudioOn: UserPreferences.shared.isAudioOn, delegate: self)
         
@@ -238,5 +241,13 @@ extension ReelsViewController: ReelsViewControllerDelegate {
     
     func reloadCollection() {
         self.collectionView.reloadData()
+    }
+    
+    func openWebView(title: String, url: String){
+        let vc = WebViewController()
+        vc.url = url
+        vc.titleText = title
+        self.pauseVideoIfNeeded()
+        self.present(vc, animated: true, completion: nil)
     }
 }

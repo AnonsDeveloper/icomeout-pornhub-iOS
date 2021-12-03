@@ -97,7 +97,11 @@ class ReelsViewCoordinator {
                     else if post.vimeoURI != nil {
                         url = post.vimeoURI
                     }
-                    let reel = ReelElement(videoUrl: url, username: post.author?.name, avatarUrl: nil, likes: post.count?.reactions, views: post.reactionInitial, tags: post.tags?.map({ $0.name ?? "" }), verified: post.author?.emailVerified, externalUrl: post.source, duration: nil, width: post.width, height: post.height)
+                    var externalUrl: String? = nil
+                    if let author = post.author?.name {
+                        externalUrl = "https://xxxtik.com/@\(author.replacingOccurrences(of: " ", with: ""))"
+                    }
+                    let reel = ReelElement(videoUrl: url, username: post.author?.name, avatarUrl: nil, likes: post.count?.reactions, views: post.reactionInitial, tags: post.tags?.map({ $0.name ?? "" }), verified: post.author?.emailVerified, externalUrl: externalUrl ?? post.source, duration: nil, width: post.width, height: post.height)
                     if url != nil {
                         self.videos.append(reel)
                     }
@@ -124,13 +128,15 @@ class ReelsViewCoordinator {
                 var row = self.videos.count - 1
                 for item in result {
                     var username: String = ""
+                    var externalUrl: String? = nil
                     if let producer = item.producerName{
                         username += producer
+                        externalUrl = "https://tik-tok.porn/@\(producer.replacingOccurrences(of: " ", with: ""))"
                     }
                     if let star = item.pornstars?.first?.name {
                         username += "\n@\(star)"
                     }
-                    let reel = ReelElement(videoUrl: item.fileurl, username: username, avatarUrl: nil, likes: Int(item.likeCount ?? "0"), views: nil, tags: item.tags?.map({ $0.name ?? "" }), verified: nil, externalUrl: nil, duration: nil, width: nil, height: nil)
+                    let reel = ReelElement(videoUrl: item.fileurl, username: username, avatarUrl: nil, likes: Int(item.likeCount ?? "0"), views: nil, tags: item.tags?.map({ $0.name ?? "" }), verified: nil, externalUrl: externalUrl, duration: nil, width: nil, height: nil)
                     self.videos.append(reel)
                 }
                 var indexPathsToReload = [IndexPath]()

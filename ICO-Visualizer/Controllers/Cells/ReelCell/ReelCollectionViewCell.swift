@@ -172,7 +172,7 @@ class ReelCollectionViewCell: UICollectionViewCell {
     
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
         if let url = self.userUrl {
-            self.delegate?.openUrl(url: url)
+            self.delegate?.openWebView(title: "", url: url.absoluteString)
         }
     }
     
